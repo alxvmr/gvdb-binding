@@ -1,4 +1,4 @@
-%Module(name=gvdb.format, language="C++")
+%Module(name=gvdb.format, language="C")
 
 //////////////////////////////////////////////////////////////////
 // guint32_le
