@@ -8,29 +8,29 @@
 
 #line 89 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
     #include <gvdb-format.h>
-#line 12 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.cpp"
-#line 122 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
+#line 12 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.c"
+#line 125 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
     #include <gvdb-format.h>
-#line 15 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.cpp"
-#line 155 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
-#include <gvdb-format.h>
-#line 18 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.cpp"
-#line 155 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
-#include <gvdb-format.h>
-#line 240 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
-        #include <gvdb-format.h>
+#line 15 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.c"
+#line 161 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
+    #include <gvdb-format.h>
+#line 18 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.c"
+#line 161 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
+    #include <gvdb-format.h>
+#line 246 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
+            #include <gvdb-format.h>
 
-        struct union_wrapper
-        {
-            union value u;
-        };
-#line 28 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.cpp"
+            struct union_wrapper
+            {
+                union value u;
+            };
+#line 28 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatcmodule.c"
 
 /* Define the strings used by this module. */
 const char sipStrings_format[] = {
-    'g', 'v', 'd', 'b', '_', 'h', 'a', 's', 'h', '_', 'i', 't', 'e', 'm', ':', ':', 'u', 'n', 'i', 'o', 'n', '_', 'w', 'r', 'a', 'p', 'p', 'e', 'r', 0,
     'g', 'v', 'd', 'b', '_', 'h', 'a', 's', 'h', '_', 'h', 'e', 'a', 'd', 'e', 'r', 0,
     'g', 'v', 'd', 'b', '_', 'h', 'a', 's', 'h', '_', 'i', 't', 'e', 'm', 0,
+    'u', 'n', 'i', 'o', 'n', '_', 'w', 'r', 'a', 'p', 'p', 'e', 'r', 0,
     'n', '_', 'b', 'l', 'o', 'o', 'm', '_', 'w', 'o', 'r', 'd', 's', 0,
     'g', 'v', 'd', 'b', '_', 'p', 'o', 'i', 'n', 't', 'e', 'r', 0,
     'g', 'v', 'd', 'b', '.', 'f', 'o', 'r', 'm', 'a', 't', 0,
@@ -56,8 +56,8 @@ sipTypeDef *sipExportedTypes_format[] = {
     &sipTypeDef_format_guint32_le.mtd_base,
     &sipTypeDef_format_gvdb_hash_header.ctd_base,
     &sipTypeDef_format_gvdb_hash_item.ctd_base,
-    &sipTypeDef_format_gvdb_hash_item_union_wrapper.ctd_base,
     &sipTypeDef_format_gvdb_pointer.ctd_base,
+    &sipTypeDef_format_union_wrapper.ctd_base,
 };
 
 
@@ -93,9 +93,9 @@ const sipAPIDef *sipAPI_format;
 
 /* The Python module initialisation function. */
 #if defined(SIP_STATIC_MODULE)
-extern "C" PyObject *PyInit_format()
+PyObject *PyInit_format(void)
 #else
-PyMODINIT_FUNC PyInit_format()
+PyMODINIT_FUNC PyInit_format(void)
 #endif
 {
     static PyMethodDef sip_methods[] = {

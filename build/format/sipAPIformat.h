@@ -13,44 +13,44 @@
  * Convenient names to refer to various strings defined in this module.
  * Only the class names are part of the public API.
  */
-#define sipNameNr_gvdb_hash_item__union_wrapper 0
-#define sipName_gvdb_hash_item__union_wrapper &sipStrings_format[0]
-#define sipNameNr_gvdb_hash_header 30
-#define sipName_gvdb_hash_header &sipStrings_format[30]
-#define sipNameNr_gvdb_hash_item 47
-#define sipName_gvdb_hash_item &sipStrings_format[47]
-#define sipNameNr_n_bloom_words 62
-#define sipName_n_bloom_words &sipStrings_format[62]
-#define sipNameNr_gvdb_pointer 76
-#define sipName_gvdb_pointer &sipStrings_format[76]
-#define sipNameNr_gvdb_format 89
-#define sipName_gvdb_format &sipStrings_format[89]
-#define sipNameNr_hash_value 101
-#define sipName_hash_value &sipStrings_format[101]
-#define sipNameNr_guint16_le 112
-#define sipName_guint16_le &sipStrings_format[112]
-#define sipNameNr_guint32_le 123
-#define sipName_guint32_le &sipStrings_format[123]
-#define sipNameNr_key_start 134
-#define sipName_key_start &sipStrings_format[134]
-#define sipNameNr_n_buckets 144
-#define sipName_n_buckets &sipStrings_format[144]
-#define sipNameNr_key_size 154
-#define sipName_key_size &sipStrings_format[154]
-#define sipNameNr_direct 163
-#define sipName_direct &sipStrings_format[163]
-#define sipNameNr_unused 170
-#define sipName_unused &sipStrings_format[170]
-#define sipNameNr_parent 177
-#define sipName_parent &sipStrings_format[177]
-#define sipNameNr_value 106
-#define sipName_value &sipStrings_format[106]
-#define sipNameNr_start 138
-#define sipName_start &sipStrings_format[138]
-#define sipNameNr_type 184
-#define sipName_type &sipStrings_format[184]
-#define sipNameNr_end 189
-#define sipName_end &sipStrings_format[189]
+#define sipNameNr_gvdb_hash_header 0
+#define sipName_gvdb_hash_header &sipStrings_format[0]
+#define sipNameNr_gvdb_hash_item 17
+#define sipName_gvdb_hash_item &sipStrings_format[17]
+#define sipNameNr_union_wrapper 32
+#define sipName_union_wrapper &sipStrings_format[32]
+#define sipNameNr_n_bloom_words 46
+#define sipName_n_bloom_words &sipStrings_format[46]
+#define sipNameNr_gvdb_pointer 60
+#define sipName_gvdb_pointer &sipStrings_format[60]
+#define sipNameNr_gvdb_format 73
+#define sipName_gvdb_format &sipStrings_format[73]
+#define sipNameNr_hash_value 85
+#define sipName_hash_value &sipStrings_format[85]
+#define sipNameNr_guint16_le 96
+#define sipName_guint16_le &sipStrings_format[96]
+#define sipNameNr_guint32_le 107
+#define sipName_guint32_le &sipStrings_format[107]
+#define sipNameNr_key_start 118
+#define sipName_key_start &sipStrings_format[118]
+#define sipNameNr_n_buckets 128
+#define sipName_n_buckets &sipStrings_format[128]
+#define sipNameNr_key_size 138
+#define sipName_key_size &sipStrings_format[138]
+#define sipNameNr_direct 147
+#define sipName_direct &sipStrings_format[147]
+#define sipNameNr_unused 154
+#define sipName_unused &sipStrings_format[154]
+#define sipNameNr_parent 161
+#define sipName_parent &sipStrings_format[161]
+#define sipNameNr_value 90
+#define sipName_value &sipStrings_format[90]
+#define sipNameNr_start 122
+#define sipName_start &sipStrings_format[122]
+#define sipNameNr_type 168
+#define sipName_type &sipStrings_format[168]
+#define sipNameNr_end 173
+#define sipName_end &sipStrings_format[173]
 
 #define sipMalloc                   sipAPI_format->api_malloc
 #define sipFree                     sipAPI_format->api_free
@@ -192,7 +192,7 @@
 /* The strings used by this module. */
 extern const char sipStrings_format[];
 
-#define sipType_gvdb_pointer sipExportedTypes_format[5]
+#define sipType_gvdb_pointer sipExportedTypes_format[4]
 
 extern sipClassTypeDef sipTypeDef_format_gvdb_pointer;
 
@@ -204,9 +204,9 @@ extern sipClassTypeDef sipTypeDef_format_gvdb_hash_header;
 
 extern sipClassTypeDef sipTypeDef_format_gvdb_hash_item;
 
-#define sipType_gvdb_hash_item_union_wrapper sipExportedTypes_format[4]
+#define sipType_union_wrapper sipExportedTypes_format[5]
 
-extern sipClassTypeDef sipTypeDef_format_gvdb_hash_item_union_wrapper;
+extern sipClassTypeDef sipTypeDef_format_union_wrapper;
 
 #define sipType_guint16_le sipExportedTypes_format[0]
 

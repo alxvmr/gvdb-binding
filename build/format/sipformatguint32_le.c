@@ -8,45 +8,43 @@
 
 #line 9 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
 #include <gvdb-format.h>
-#line 12 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatguint32_le.cpp"
+#line 12 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatguint32_le.c"
 
 
 
-extern "C" {static void assign_guint32_le(void *, Py_ssize_t, void *);}
 static void assign_guint32_le(void *sipDst, Py_ssize_t sipDstIdx, void *sipSrc)
 {
-    reinterpret_cast< ::guint32_le *>(sipDst)[sipDstIdx] = *reinterpret_cast< ::guint32_le *>(sipSrc);
+    ((struct  ::guint32_le *)sipDst)[sipDstIdx] = *((struct  ::guint32_le *)sipSrc);
 }
 
 
-extern "C" {static void *array_guint32_le(Py_ssize_t);}
 static void *array_guint32_le(Py_ssize_t sipNrElem)
 {
-    return new  ::guint32_le[sipNrElem];
+    return sipMalloc(sizeof (struct  ::guint32_le) * sipNrElem);
 }
 
 
-extern "C" {static void *copy_guint32_le(const void *, Py_ssize_t);}
 static void *copy_guint32_le(const void *sipSrc, Py_ssize_t sipSrcIdx)
 {
-    return new  ::guint32_le(reinterpret_cast<const  ::guint32_le *>(sipSrc)[sipSrcIdx]);
+    struct  ::guint32_le *sipPtr = sipMalloc(sizeof (struct  ::guint32_le));
+    *sipPtr = ((const struct  ::guint32_le *)sipSrc)[sipSrcIdx];
+
+    return sipPtr;
 }
 
 
 /* Call the mapped type's destructor. */
-extern "C" {static void release_guint32_le(void *, int, void *);}
-static void release_guint32_le(void *sipCppV, int, void *)
+static void release_guint32_le(void *sipCppV, int sipState, void *)
 {
-     ::guint32_le *sipCpp = reinterpret_cast< ::guint32_le *>(sipCppV);
-    delete sipCpp;
+    struct  ::guint32_le *sipCpp = (struct  ::guint32_le *)sipCppV;
+    sipFree(sipCpp);
 }
 
 
 
-extern "C" {static int convertTo_guint32_le(PyObject *, void **, int *, PyObject *, void **);}
-static int convertTo_guint32_le(PyObject *sipPy, void **sipCppPtrV, int *sipIsErr, PyObject *, void **)
+static int convertTo_guint32_le(PyObject *sipPy, void **sipCppPtrV, int *sipIsErr, PyObject *sipTransferObj, void **sipUserStatePtr)
 {
-     ::guint32_le **sipCppPtr = reinterpret_cast< ::guint32_le **>(sipCppPtrV);
+    struct  ::guint32_le **sipCppPtr = (struct  ::guint32_le **)sipCppPtrV;
 
 #line 19 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
     if (sipIsErr == NULL)
@@ -68,20 +66,19 @@ static int convertTo_guint32_le(PyObject *sipPy, void **sipCppPtrV, int *sipIsEr
         return 1;
     }
     return 0;
-#line 72 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatguint32_le.cpp"
+#line 70 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatguint32_le.c"
 }
 
 
-extern "C" {static PyObject *convertFrom_guint32_le(void *, PyObject *);}
-static PyObject *convertFrom_guint32_le(void *sipCppV, PyObject *)
+static PyObject *convertFrom_guint32_le(void *sipCppV, PyObject *sipTransferObj)
 {
-    ::guint32_le *sipCpp = reinterpret_cast< ::guint32_le *>(sipCppV);
+   struct  ::guint32_le *sipCpp = (struct  ::guint32_le *)sipCppV;
 
 #line 13 "/home/DOMAIN.TEST/administrator/gvdb/policy_bin_reader.sip"
     PyObject* pSize;
     pSize = PyLong_FromUnsignedLong(sipCpp->value);  
     return pSize;
-#line 85 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatguint32_le.cpp"
+#line 82 "/home/DOMAIN.TEST/administrator/gvdb/build/format/sipformatguint32_le.c"
 }
 
 
