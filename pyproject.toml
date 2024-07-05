@@ -8,7 +8,7 @@ version = "0.1"
 license = "GPLv2"
 
 [tool.sip.bindings.policy_bin_reader]
-headers = ["gvdb-builder.h", "gvdb-format.h", "gvdb-reader.h", "glib.h"]
+headers = ["gvdb-format.h"]
 libraries = ["gvdb", "glib-2.0"]
 include-dirs = ["gvdb", "/usr/include/glib-2.0", "/usr/lib64/glib-2.0/include"]
 library-dirs = ["gvdb/bin", "/usr/lib64"]

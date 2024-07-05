@@ -37,6 +37,12 @@ struct gvdb_hash_header {
   guint32_le n_buckets;
 };
 
+  union value_t
+  {
+    struct gvdb_pointer pointer;
+    gchar direct[8];
+  };
+
 struct gvdb_hash_item {
   guint32_le hash_value;
   guint32_le parent;
@@ -46,11 +52,7 @@ struct gvdb_hash_item {
   gchar type;
   gchar unused;
 
-  union
-  {
-    struct gvdb_pointer pointer;
-    gchar direct[8];
-  } value;
+  value_t value;
 };
 
 struct gvdb_header {
