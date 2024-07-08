@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<page id="Gvdb.Table.has_value"
+      type="topic"
+      style="method"
+      xmlns="http://projectmallard.org/1.0/"
+      xmlns:api="http://projectmallard.org/experimental/api/"
+      xmlns:ui="http://projectmallard.org/1.0/ui/">
+  <info>
+    <link xref="Gvdb.Table" group="method" type="guide"/>
+    <api:function>
+      <api:returns>
+        <api:type>gboolean</api:type>
+      </api:returns>
+      <api:name>gvdb_table_has_value</api:name>
+      <api:arg>
+        <api:type>GvdbTable*</api:type>
+        <api:name>table</api:name>
+      </api:arg>
+      <api:arg>
+        <api:type>const gchar*</api:type>
+        <api:name>key</api:name>
+      </api:arg>
+    </api:function>
+  </info>
+  <title>gvdb_table_has_value</title>
+  <synopsis><code mime="text/x-csrc">
+gboolean gvdb_table_has_value (GvdbTable* table,
+                               const gchar* key);
+  </code></synopsis>
+  <p>Checks for a value named <code>key</code> in @file.</p>  <p>Note: this function does not consider non-value nodes (other hash
+tables, for example).</p>
+
+<terms>
+<item>
+<title><code>table</code></title>
+
+</item>
+<item>
+<title><code>key</code></title>
+  <p>a string</p>
+</item>
+<item>
+<title><code>Returns</code></title>
+  <p><code>TRUE</code> if <code>key</code> is in the table</p>
+</item>
+</terms>
+
+</page>

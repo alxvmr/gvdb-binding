@@ -1,0 +1,648 @@
+<?xml version="1.0"?>
+<!-- This file was automatically generated from C sources - DO NOT EDIT!
+To affect the contents of this file, edit the original C definitions,
+and/or use gtk-doc annotations.  -->
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
+  <c:include name="gvdb-format.h"/>
+  <namespace name="Gvdb"
+             version="1.0"
+             shared-library=""
+             c:identifier-prefixes="Gvdb"
+             c:symbol-prefixes="gvdb">
+    <record name="Item" c:type="GvdbItem" disguised="1">
+      <source-position filename="gvdb-builder.h" line="27"/>
+      <method name="set_hash_table" c:identifier="gvdb_item_set_hash_table">
+        <source-position filename="gvdb-builder.h" line="45"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="item" transfer-ownership="none">
+            <type name="Item" c:type="GvdbItem*"/>
+          </instance-parameter>
+          <parameter name="table" transfer-ownership="none">
+            <type name="GLib.HashTable" c:type="GHashTable*">
+              <type name="gpointer" c:type="gpointer"/>
+              <type name="gpointer" c:type="gpointer"/>
+            </type>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_parent" c:identifier="gvdb_item_set_parent">
+        <source-position filename="gvdb-builder.h" line="48"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="item" transfer-ownership="none">
+            <type name="Item" c:type="GvdbItem*"/>
+          </instance-parameter>
+          <parameter name="parent" transfer-ownership="none">
+            <type name="Item" c:type="GvdbItem*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_value"
+              c:identifier="gvdb_item_set_value"
+              introspectable="0">
+        <source-position filename="gvdb-builder.h" line="42"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="item" transfer-ownership="none">
+            <type name="Item" c:type="GvdbItem*"/>
+          </instance-parameter>
+          <parameter name="value" transfer-ownership="none">
+            <type c:type="GVariant*"/>
+          </parameter>
+        </parameters>
+      </method>
+    </record>
+    <constant name="SIGNATURE0" value="1918981703" c:type="GVDB_SIGNATURE0">
+      <source-position filename="gvdb-format.h" line="82"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <constant name="SIGNATURE1" value="1953390953" c:type="GVDB_SIGNATURE1">
+      <source-position filename="gvdb-format.h" line="83"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <record name="Table" c:type="GvdbTable" disguised="1">
+      <source-position filename="gvdb-reader.h" line="42"/>
+      <method name="free" c:identifier="gvdb_table_free">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="709">Frees @file.</doc>
+        <source-position filename="gvdb-reader.h" line="55"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_names"
+              c:identifier="gvdb_table_get_names"
+              introspectable="0">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="334">Gets a list of all names contained in @table.
+
+No call to gvdb_table_get_table(), gvdb_table_list() or
+gvdb_table_get_value() will succeed unless it is for one of the
+names returned by this function.
+
+Note that some names that are returned may still fail for all of the
+above calls in the case of the corrupted file.  Note also that the
+returned strings may not be utf8.</doc>
+        <source-position filename="gvdb-reader.h" line="57"/>
+        <return-value>
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="349">a %NULL-terminated list of strings, of length @length</doc>
+          <array length="0" zero-terminated="0" c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="336">a #GvdbTable</doc>
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+          <parameter name="length"
+                     direction="out"
+                     caller-allocates="0"
+                     transfer-ownership="full"
+                     optional="1"
+                     allow-none="1">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="337">the number of items returned, or %NULL</doc>
+            <type name="gsize" c:type="gsize*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_raw_value"
+              c:identifier="gvdb_table_get_raw_value"
+              introspectable="0">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="641">Looks up a value named @key in @file.
+
+This call is equivalent to gvdb_table_get_value() except that it
+never byteswaps the value.</doc>
+        <source-position filename="gvdb-reader.h" line="66"/>
+        <return-value transfer-ownership="full" nullable="1">
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="651">a #GVariant, or %NULL</doc>
+          <type c:type="GVariant*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="643">a #GvdbTable</doc>
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="644">a string</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_table"
+              c:identifier="gvdb_table_get_table"
+              introspectable="0">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="665">Looks up the hash table named @key in @file.
+
+The toplevel hash table in a #GvdbTable can contain reference to
+child hash tables (and those can contain further references...).
+
+If @key is not found in @file then %NULL is returned.  Otherwise, a
+new #GvdbTable is returned, referring to the child hashtable as
+contained in the file.  This newly-created #GvdbTable does not depend
+on the continued existence of @file.
+
+You should call gvdb_table_free() on the return result when you no
+longer require it.</doc>
+        <source-position filename="gvdb-reader.h" line="63"/>
+        <return-value>
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="683">a new #GvdbTable, or %NULL</doc>
+          <type name="Table" c:type="GvdbTable*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="668">a string</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_value"
+              c:identifier="gvdb_table_get_value"
+              introspectable="0">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="601">Looks up a value named @key in @file.
+
+If the value is not found then %NULL is returned.  Otherwise, a new
+#GVariant instance is returned.  The #GVariant does not depend on the
+continued existence of @file.
+
+You should call g_variant_unref() on the return result when you no
+longer require it.</doc>
+        <source-position filename="gvdb-reader.h" line="69"/>
+        <return-value transfer-ownership="full" nullable="1">
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="615">a #GVariant, or %NULL</doc>
+          <type c:type="GVariant*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="604">a string</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="has_value" c:identifier="gvdb_table_has_value">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="551">Checks for a value named @key in @file.
+
+Note: this function does not consider non-value nodes (other hash
+tables, for example).</doc>
+        <source-position filename="gvdb-reader.h" line="73"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="561">%TRUE if @key is in the table</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="554">a string</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="is_valid" c:identifier="gvdb_table_is_valid">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="722">Checks if the table is still valid.
+
+An on-disk GVDB can be marked as invalid.  This happens when the file
+has been replaced.  The appropriate action is typically to reopen the
+file.</doc>
+        <source-position filename="gvdb-reader.h" line="76"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="732">%TRUE if @table is still valid</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="724">a #GvdbTable</doc>
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="list" c:identifier="gvdb_table_list" introspectable="0">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="487">List all of the keys that appear below @key.  The nesting of keys
+within the hash file is defined by the program that created the hash
+file.  One thing is constant: each item in the returned array can be
+concatenated to @key to obtain the full name of that key.
+
+It is not possible to tell from this function if a given key is
+itself a path, a value, or another hash table; you are expected to
+know this for yourself.
+
+You should call g_strfreev() on the return result when you no longer
+require it.</doc>
+        <source-position filename="gvdb-reader.h" line="60"/>
+        <return-value>
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="504">a %NULL-terminated string array</doc>
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <instance-parameter name="table" transfer-ownership="none">
+            <type name="Table" c:type="GvdbTable*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="490">a string</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <function name="get_contents"
+                c:identifier="gvdb_table_get_contents"
+                introspectable="0">
+        <source-position filename="gvdb-builder.h" line="69"/>
+        <return-value>
+          <type c:type="GBytes*"/>
+        </return-value>
+        <parameters>
+          <parameter name="table" transfer-ownership="none">
+            <type name="GLib.HashTable" c:type="GHashTable*">
+              <type name="gpointer" c:type="gpointer"/>
+              <type name="gpointer" c:type="gpointer"/>
+            </type>
+          </parameter>
+          <parameter name="byteswap" transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </function>
+      <function name="new"
+                c:identifier="gvdb_table_new"
+                introspectable="0"
+                throws="1">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="186">Creates a new #GvdbTable using the #GMappedFile for @filename as the
+#GBytes.
+
+This function will fail if the file cannot be opened.
+In that case, the #GError that is returned will be an error from
+g_mapped_file_new().
+
+An empty or corrupt file will result in %G_FILE_ERROR_INVAL.</doc>
+        <source-position filename="gvdb-reader.h" line="51"/>
+        <return-value>
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="201">a new #GvdbTable</doc>
+          <type name="Table" c:type="GvdbTable*"/>
+        </return-value>
+        <parameters>
+          <parameter name="filename" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="188">a filename</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="trusted" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="189">if the contents of @bytes are trusted</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </function>
+      <function name="new_from_bytes"
+                c:identifier="gvdb_table_new_from_bytes"
+                introspectable="0"
+                throws="1">
+        <doc xml:space="preserve"
+             filename="gvdb-reader.c"
+             line="125">Creates a new #GvdbTable from the contents of @bytes.
+
+This call can fail if the header contained in @bytes is invalid or if @bytes
+is empty; if so, %G_FILE_ERROR_INVAL will be returned.
+
+You should call gvdb_table_free() on the return result when you no
+longer require it.</doc>
+        <source-position filename="gvdb-reader.h" line="47"/>
+        <return-value>
+          <doc xml:space="preserve"
+               filename="gvdb-reader.c"
+               line="139">a new #GvdbTable</doc>
+          <type name="Table" c:type="GvdbTable*"/>
+        </return-value>
+        <parameters>
+          <parameter name="bytes" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="127">the #GBytes with the data</doc>
+            <type c:type="GBytes*"/>
+          </parameter>
+          <parameter name="trusted" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="128">if the contents of @bytes are trusted</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </function>
+      <function name="write_contents"
+                c:identifier="gvdb_table_write_contents"
+                throws="1">
+        <source-position filename="gvdb-builder.h" line="52"/>
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="table" transfer-ownership="none">
+            <type name="GLib.HashTable" c:type="GHashTable*">
+              <type name="gpointer" c:type="gpointer"/>
+              <type name="gpointer" c:type="gpointer"/>
+            </type>
+          </parameter>
+          <parameter name="filename" transfer-ownership="none">
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="byteswap" transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </function>
+      <function name="write_contents_async"
+                c:identifier="gvdb_table_write_contents_async"
+                introspectable="0">
+        <source-position filename="gvdb-builder.h" line="57"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="table" transfer-ownership="none">
+            <type name="GLib.HashTable" c:type="GHashTable*">
+              <type name="gpointer" c:type="gpointer"/>
+              <type name="gpointer" c:type="gpointer"/>
+            </type>
+          </parameter>
+          <parameter name="filename" transfer-ownership="none">
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="byteswap" transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+          <parameter name="cancellable" transfer-ownership="none">
+            <type c:type="GCancellable*"/>
+          </parameter>
+          <parameter name="callback" transfer-ownership="none">
+            <type c:type="GAsyncReadyCallback"/>
+          </parameter>
+          <parameter name="user_data"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1">
+            <type name="gpointer" c:type="gpointer"/>
+          </parameter>
+        </parameters>
+      </function>
+      <function name="write_contents_finish"
+                c:identifier="gvdb_table_write_contents_finish"
+                introspectable="0"
+                throws="1">
+        <source-position filename="gvdb-builder.h" line="64"/>
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="table" transfer-ownership="none">
+            <type name="GLib.HashTable" c:type="GHashTable*">
+              <type name="gpointer" c:type="gpointer"/>
+              <type name="gpointer" c:type="gpointer"/>
+            </type>
+          </parameter>
+          <parameter name="result" transfer-ownership="none">
+            <type c:type="GAsyncResult*"/>
+          </parameter>
+        </parameters>
+      </function>
+    </record>
+    <record name="guint16_le" c:type="guint16_le">
+      <source-position filename="gvdb-format.h" line="27"/>
+      <field name="value" writable="1">
+        <type name="guint16" c:type="guint16"/>
+      </field>
+    </record>
+    <record name="guint32_le" c:type="guint32_le">
+      <source-position filename="gvdb-format.h" line="28"/>
+      <field name="value" writable="1">
+        <type name="guint32" c:type="guint32"/>
+      </field>
+    </record>
+    <record name="gvdb_hash_header" c:type="gvdb_hash_header">
+      <source-position filename="gvdb-format.h" line="38"/>
+      <field name="n_bloom_words" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+      <field name="n_buckets" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+    </record>
+    <record name="gvdb_hash_item" c:type="gvdb_hash_item">
+      <source-position filename="gvdb-format.h" line="54"/>
+      <field name="hash_value" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+      <field name="parent" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+      <field name="key_start" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+      <field name="key_size" writable="1">
+        <type name="guint16_le" c:type="guint16_le"/>
+      </field>
+      <field name="type" writable="1">
+        <type name="gchar" c:type="gchar"/>
+      </field>
+      <field name="unused" writable="1">
+        <type name="gchar" c:type="gchar"/>
+      </field>
+      <union name="value" c:type="value">
+        <source-position filename="gvdb-format.h" line="53"/>
+        <field name="pointer" writable="1">
+          <type name="gpointer" c:type="gvdb_pointer"/>
+        </field>
+        <field name="direct" writable="1">
+          <array zero-terminated="0" fixed-size="8">
+            <type name="gchar" c:type="gchar"/>
+          </array>
+        </field>
+      </union>
+    </record>
+    <record name="gvdb_header" c:type="gvdb_header">
+      <source-position filename="gvdb-format.h" line="62"/>
+      <field name="signature" writable="1">
+        <array zero-terminated="0" fixed-size="2">
+          <type name="guint32" c:type="guint32"/>
+        </array>
+      </field>
+      <field name="version" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+      <field name="options" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+      <field name="root" writable="1">
+        <type name="gpointer" c:type="gvdb_pointer"/>
+      </field>
+    </record>
+    <record name="gvdb_pointer" c:type="gvdb_pointer">
+      <source-position filename="gvdb-format.h" line="33"/>
+      <field name="start" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+      <field name="end" writable="1">
+        <type name="guint32_le" c:type="guint32_le"/>
+      </field>
+    </record>
+    <function name="hash_table_insert"
+              c:identifier="gvdb_hash_table_insert"
+              introspectable="0">
+      <source-position filename="gvdb-builder.h" line="34"/>
+      <return-value>
+        <type name="Item" c:type="GvdbItem*"/>
+      </return-value>
+      <parameters>
+        <parameter name="table" transfer-ownership="none">
+          <type name="GLib.HashTable" c:type="GHashTable*">
+            <type name="gpointer" c:type="gpointer"/>
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="key" transfer-ownership="none">
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="hash_table_insert_string"
+              c:identifier="gvdb_hash_table_insert_string">
+      <source-position filename="gvdb-builder.h" line="37"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="table" transfer-ownership="none">
+          <type name="GLib.HashTable" c:type="GHashTable*">
+            <type name="gpointer" c:type="gpointer"/>
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="key" transfer-ownership="none">
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="value" transfer-ownership="none">
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="hash_table_new"
+              c:identifier="gvdb_hash_table_new"
+              introspectable="0">
+      <source-position filename="gvdb-builder.h" line="30"/>
+      <return-value>
+        <type name="GLib.HashTable" c:type="GHashTable*">
+          <type name="gpointer" c:type="gpointer"/>
+          <type name="gpointer" c:type="gpointer"/>
+        </type>
+      </return-value>
+      <parameters>
+        <parameter name="parent" transfer-ownership="none">
+          <type name="GLib.HashTable" c:type="GHashTable*">
+            <type name="gpointer" c:type="gpointer"/>
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="key" transfer-ownership="none">
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="table_write_contents"
+              c:identifier="gvdb_table_write_contents"
+              moved-to="Table.write_contents"
+              throws="1">
+      <source-position filename="gvdb-builder.h" line="52"/>
+      <return-value transfer-ownership="none">
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+      <parameters>
+        <parameter name="table" transfer-ownership="none">
+          <type name="GLib.HashTable" c:type="GHashTable*">
+            <type name="gpointer" c:type="gpointer"/>
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="filename" transfer-ownership="none">
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="byteswap" transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+  </namespace>
+</repository>

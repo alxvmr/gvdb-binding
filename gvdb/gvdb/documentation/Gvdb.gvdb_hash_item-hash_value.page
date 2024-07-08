@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page id="Gvdb.gvdb_hash_item-hash_value"
+      type="topic"
+      style="field"
+      xmlns="http://projectmallard.org/1.0/"
+      xmlns:api="http://projectmallard.org/experimental/api/"
+      xmlns:ui="http://projectmallard.org/1.0/ui/">
+  <info>
+    <link xref="Gvdb.gvdb_hash_item" group="field" type="guide"/>
+  </info>
+  <title>Gvdb.gvdb_hash_item->hash_value</title>
+
+
+</page>

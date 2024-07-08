@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<page id="Gvdb.Table.list"
+      type="topic"
+      style="method"
+      xmlns="http://projectmallard.org/1.0/"
+      xmlns:api="http://projectmallard.org/experimental/api/"
+      xmlns:ui="http://projectmallard.org/1.0/ui/">
+  <info>
+    <link xref="Gvdb.Table" group="method" type="guide"/>
+    <api:function>
+      <api:returns>
+        <api:type>utf8*</api:type>
+      </api:returns>
+      <api:name>gvdb_table_list</api:name>
+      <api:arg>
+        <api:type>GvdbTable*</api:type>
+        <api:name>table</api:name>
+      </api:arg>
+      <api:arg>
+        <api:type>const gchar*</api:type>
+        <api:name>key</api:name>
+      </api:arg>
+    </api:function>
+  </info>
+  <title>gvdb_table_list</title>
+  <synopsis><code mime="text/x-csrc">
+gchar** gvdb_table_list (GvdbTable* table,
+                       const gchar* key);
+  </code></synopsis>
+  <p>List all of the keys that appear below <code>key</code>.  The nesting of keys
+within the hash file is defined by the program that created the hash
+file.  One thing is constant: each item in the returned array can be
+concatenated to <code>key</code> to obtain the full name of that key.</p>  <p>It is not possible to tell from this function if a given key is
+itself a path, a value, or another hash table; you are expected to
+know this for yourself.</p>  <p>You should call g_strfreev() on the return result when you no longer
+require it.</p>
+
+<terms>
+<item>
+<title><code>table</code></title>
+
+</item>
+<item>
+<title><code>key</code></title>
+  <p>a string</p>
+</item>
+<item>
+<title><code>Returns</code></title>
+  <p>a <code>NULL</code>-terminated string array</p>
+</item>
+</terms>
+
+</page>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<page id="Gvdb.Table.get_names"
+      type="topic"
+      style="method"
+      xmlns="http://projectmallard.org/1.0/"
+      xmlns:api="http://projectmallard.org/experimental/api/"
+      xmlns:ui="http://projectmallard.org/1.0/ui/">
+  <info>
+    <link xref="Gvdb.Table" group="method" type="guide"/>
+    <api:function>
+      <api:returns>
+        <api:type>utf8*</api:type>
+      </api:returns>
+      <api:name>gvdb_table_get_names</api:name>
+      <api:arg>
+        <api:type>GvdbTable*</api:type>
+        <api:name>table</api:name>
+      </api:arg>
+      <api:arg>
+        <api:type>gsize*</api:type>
+        <api:name>length</api:name>
+      </api:arg>
+    </api:function>
+  </info>
+  <title>gvdb_table_get_names</title>
+  <synopsis><code mime="text/x-csrc">
+gchar** gvdb_table_get_names (GvdbTable* table,
+                            gsize* length);
+  </code></synopsis>
+  <p>Gets a list of all names contained in <code>table</code>.</p>  <p>No call to <link xref="Gvdb.Table.get_table"/>, <link xref="Gvdb.Table.list"/> or
+<link xref="Gvdb.Table.get_value"/> will succeed unless it is for one of the
+names returned by this function.</p>  <p>Note that some names that are returned may still fail for all of the
+above calls in the case of the corrupted file.  Note also that the
+returned strings may not be utf8.</p>
+
+<terms>
+<item>
+<title><code>table</code></title>
+  <p>a <link xref="Gvdb.Table"/></p>
+</item>
+<item>
+<title><code>length</code></title>
+  <p>the number of items returned, or <code>NULL</code></p>
+</item>
+<item>
+<title><code>Returns</code></title>
+  <p>a <code>NULL</code>-terminated list of strings, of length <code>length</code></p>
+</item>
+</terms>
+
+</page>
