@@ -29,8 +29,6 @@ void read_bin(const char *path){
 }
 '''
 
-my_error = GLib.GError()
-
 if (GLib.file_get_contents (path_bin)[0]):
     bytes = GLib.file_get_contents (path_bin)[1]
-    #table = Gvdb.Table.new_from_bytes(bytes, False)
+    # table = Gvdb.Table.new_from_bytes(bytes, False)     // AttributeError: type object 'Table' has no attribute 'new_from_bytes' //
