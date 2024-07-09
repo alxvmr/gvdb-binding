@@ -93,3 +93,4 @@ Assumption - `g-ir-scanner` incorrectly analyzed information about the gvdb libr
 Solution:
 1. Manually edit the `.gir`
 2. Deal with incorrect behavior of auto-generation (`g-ir-scanner`)
+3. :white_check_mark: Add annotations for `.gir` to the sources (`.c` files)
