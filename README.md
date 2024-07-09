@@ -16,7 +16,7 @@ You can generate the `.typelib` file automatically by using the `g-ir-compiler` 
 ---
 ## Preparing the environment
 
-<span style="color:PaleGreen"> [Already in the repository]</span> - means that the file is already in the repository, the playback step is given to understand the process.
+![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) - means that the file is already in the repository, the playback step is given to understand the process.
 
 
 ### Installation of necessary packages (ALT Linux p10)
@@ -47,14 +47,14 @@ pip install --upgrade pip
 python3 -m pip install PyGObject
 ```
 
-### Compiling the .gir file <span style="color:PaleGreen"> [Already in the repository]</span>
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Compiling the .gir file
 Execute the command from the `./gvdb/gvdb` directory (where gvdb.so is located):
 
 ```bash
 LD_LIBRARY_PATH=./ g-ir-scanner --namespace=Gvdb --nsversion=1.0 --library=libgvdb.so --accept-unprefixed --output=Gvdb.gir --c-include="gvdb-format.h" *.h gvdb-builder.c gvdb-reader.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include/
 ```
 
-### Creating a binary file (.gir -> .typelib) <span style="color:PaleGreen"> [Already in the repository]</span>
+### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)Creating a binary file (.gir -> .typelib)
 Execute the command from the `./gvdb/gvdb` directory (where Gvdb.gir is located):
 
 ```bash
