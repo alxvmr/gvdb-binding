@@ -23,6 +23,7 @@
 #define __gvdb_reader_h__
 
 #include <glib.h>
+#include <glib-object.h>
 
 /* We cannot enable the weak attribute unconditionally here because both
  * gvdb/gvdb-reader.c and tests/dconf-mock-gvdb.c include this file. The
@@ -50,7 +51,7 @@ GvdbTable*              gvdb_table_copy                                 (GvdbTab
 G_GNUC_INTERNAL GVDB_GNUC_WEAK
 GvdbTable*              gvdb_table_empty_new                            (void);
 G_GNUC_INTERNAL GVDB_GNUC_WEAK
-GType                   gvdb_table_get_type                             (void);
+GType                   gvdb_table_get_type                             (void) G_GNUC_CONST;
 
 G_GNUC_INTERNAL GVDB_GNUC_WEAK
 GvdbTable *             gvdb_table_new_from_bytes                       (GBytes       *bytes,
