@@ -51,7 +51,7 @@ python3 -m pip install PyGObject
 Execute the command from the `./gvdb/gvdb` directory (where gvdb.so is located):
 
 ```bash
-LD_LIBRARY_PATH=./ g-ir-scanner --namespace=Gvdb --nsversion=1.0 --library=libgvdb.so --accept-unprefixed --output=Gvdb.gir --c-include="gvdb-format.h" *.h gvdb-builder.c gvdb-reader.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include/
+LD_LIBRARY_PATH=./ g-ir-scanner --namespace=Gvdb --nsversion=1.0 --include GLib-2.0 --include Gio-2.0 -L . --library=libgvdb.so --accept-unprefixed --output=Gvdb.gir --c-include="gvdb-format.h" *.h *.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include --warn-all
 ```
 
 ### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)Creating a binary file (.gir -> .typelib)
