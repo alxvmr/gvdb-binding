@@ -38,7 +38,7 @@ require it.</p>
 <terms>
 <item>
 <title><code>table</code></title>
-
+  <p>a <link xref="Gvdb.Table"/></p>
 </item>
 <item>
 <title><code>key</code></title>

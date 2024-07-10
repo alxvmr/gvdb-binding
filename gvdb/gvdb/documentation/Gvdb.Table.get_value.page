@@ -27,15 +27,15 @@
 GVariant* gvdb_table_get_value (GvdbTable* table,
                                 const gchar* key);
   </code></synopsis>
-  <p>Looks up a value named <code>key</code> in @file.</p>  <p>If the value is not found then <code>NULL</code> is returned.  Otherwise, a new
-#GVariant instance is returned.  The #GVariant does not depend on the
-continued existence of @file.</p>  <p>You should call g_variant_unref() on the return result when you no
+  <p>Looks up a value named <code>key</code> in <code>table</code>.</p>  <p>If the value is not found then <code>NULL</code> is returned.  Otherwise, a new
+<link href="../GLib-2.0/GLib.Variant.html">GLib.Variant</link> instance is returned.  The <link href="../GLib-2.0/GLib.Variant.html">GLib.Variant</link> does not depend on the
+continued existence of <code>table</code>.</p>  <p>You should call g_variant_unref() on the return result when you no
 longer require it.</p>
 
 <terms>
 <item>
 <title><code>table</code></title>
-
+  <p>a <link xref="Gvdb.Table"/></p>
 </item>
 <item>
 <title><code>key</code></title>
@@ -43,7 +43,7 @@ longer require it.</p>
 </item>
 <item>
 <title><code>Returns</code></title>
-  <p>a #GVariant, or <code>NULL</code></p>
+  <p>a <link href="../GLib-2.0/GLib.Variant.html">GLib.Variant</link>, or <code>NULL</code></p>
 </item>
 </terms>
 

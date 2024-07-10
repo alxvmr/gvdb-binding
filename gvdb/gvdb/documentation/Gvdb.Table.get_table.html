@@ -21,18 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents"><code class="syntax language-c">GvdbTable* gvdb_table_get_table (GvdbTable* table,
                                  const gchar* key);
   </code></pre></div></div></div></div></div>
-<p class="p">Looks up the hash table named <span class="code">key</span> in @file.</p>
+<p class="p">Looks up the hash table named <span class="code">key</span> in <span class="code">table</span>.</p>
 <p class="p">The toplevel hash table in a <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span> can contain reference to
 child hash tables (and those can contain further references...).</p>
-<p class="p">If <span class="code">key</span> is not found in @file then <span class="code">NULL</span> is returned.  Otherwise, a
+<p class="p">If <span class="code">key</span> is not found in <span class="code">table</span> then <span class="code">NULL</span> is returned.  Otherwise, a
 new <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span> is returned, referring to the child hashtable as
 contained in the file.  This newly-created <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span> does not depend
-on the continued existence of @file.</p>
+on the continued existence of <span class="code">table</span>.</p>
 <p class="p">You should call <span class="link"><a href="Gvdb.Table.free.html" title="gvdb_table_free">gvdb_table_free</a></span> on the return result when you no
 longer require it.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms"><span class="code">table</span></dt>
-<dd class="terms"></dd>
+<dd class="terms"><p class="p">a <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span></p></dd>
 <dt class="terms"><span class="code">key</span></dt>
 <dd class="terms"><p class="p">a string</p></dd>
 <dt class="terms"><span class="code">Returns</span></dt>

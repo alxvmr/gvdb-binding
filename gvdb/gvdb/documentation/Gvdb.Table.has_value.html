@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents"><code class="syntax language-c">gboolean gvdb_table_has_value (GvdbTable* table,
                                const gchar* key);
   </code></pre></div></div></div></div></div>
-<p class="p">Checks for a value named <span class="code">key</span> in @file.</p>
+<p class="p">Checks for a value named <span class="code">key</span> in <span class="code">table</span>.</p>
 <p class="p">Note: this function does not consider non-value nodes (other hash
 tables, for example).</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms"><span class="code">table</span></dt>
-<dd class="terms"></dd>
+<dd class="terms"><p class="p">a <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span></p></dd>
 <dt class="terms"><span class="code">key</span></dt>
 <dd class="terms"><p class="p">a string</p></dd>
 <dt class="terms"><span class="code">Returns</span></dt>

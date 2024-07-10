@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents"><code class="syntax language-c">GvdbTable* gvdb_table_new (const gchar* filename,
                            gboolean trusted);
   </code></pre></div></div></div></div></div>
-<p class="p">Creates a new <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span> using the #GMappedFile for <span class="code">filename</span> as the
-#GBytes.</p>
+<p class="p">Creates a new <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span> using the <span class="link"><a href="../GLib-2.0/GLib.MappedFile.html" title="../GLib-2.0/GLib.MappedFile.html">GLib.MappedFile</a></span> for <span class="code">filename</span> as the
+<span class="link"><a href="../GLib-2.0/GLib.Bytes.html" title="../GLib-2.0/GLib.Bytes.html">GLib.Bytes</a></span>.</p>
 <p class="p">This function will fail if the file cannot be opened.
-In that case, the #GError that is returned will be an error from
+In that case, the <span class="link"><a href="../GLib-2.0/GLib.Error.html" title="../GLib-2.0/GLib.Error.html">GLib.Error</a></span> that is returned will be an error from
 g_mapped_file_new().</p>
 <p class="p">An empty or corrupt file will result in %G_FILE_ERROR_INVAL.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">

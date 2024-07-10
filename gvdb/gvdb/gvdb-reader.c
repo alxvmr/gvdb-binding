@@ -44,6 +44,67 @@ struct _GvdbTable {
   guint32 n_hash_items;
 };
 
+GvdbTable *
+gvdb_table_copy (GvdbTable *table)
+{
+  GvdbTable *new;
+
+
+  g_return_val_if_fail (table != NULL, NULL);
+
+  new = g_slice_new0 (GvdbTable);
+
+  new->bytes = table->bytes;
+  new->data = table->data;
+  new->size = table->size;
+  new->byteswapped = table->byteswapped;
+  new->trusted = table->trusted;
+  new->bloom_words = table->bloom_words;
+  new->n_bloom_words = table->n_bloom_words;
+  new->bloom_shift = table->bloom_shift;
+  new->hash_buckets = table->hash_buckets;
+  new->n_buckets = table->n_buckets;
+  new->hash_items = table->hash_items;
+  new->n_hash_items = table->n_hash_items;
+
+  return new;
+}
+
+GvdbTable*
+gvdb_table_empty_new(void)
+{
+  GvdbTable *table = g_new0(GvdbTable, 1);
+  table->bytes = NULL;
+  table->data = NULL;
+  table->size = 0;
+  table->byteswapped = 0;
+  table->trusted = 0;
+  table->bloom_words = NULL;
+  table->n_bloom_words = 0;
+  table->bloom_shift = 0;
+  table->hash_buckets = NULL;
+  table->n_buckets = 0;
+  table->hash_items = NULL;
+  table->n_hash_items = 0;
+
+  return table;
+}
+
+/**
+ * gvdb_table_free:
+ * @table: a #GvdbTable
+ *
+ * Frees @table.
+ **/
+void
+gvdb_table_free (GvdbTable *file)
+{
+  g_bytes_unref (file->bytes);
+  g_slice_free (GvdbTable, file);
+}
+
+G_DEFINE_BOXED_TYPE (GvdbTable, gvdb_table, gvdb_table_copy, gvdb_table_free)
+
 static const gchar *
 gvdb_table_item_get_key (GvdbTable                   *file,
                          const struct gvdb_hash_item *item,
@@ -346,7 +407,7 @@ gvdb_table_list_from_item (GvdbTable                    *table,
  * above calls in the case of the corrupted file.  Note also that the
  * returned strings may not be utf8.
  *
- * Returns: (array length=length): a %NULL-terminated list of strings, of length @length
+ * Returns: (transfer full) (array length=length): a %NULL-terminated list of strings, of length @length
  **/
 gchar **
 gvdb_table_get_names (GvdbTable *table,
@@ -486,7 +547,7 @@ gvdb_table_get_names (GvdbTable *table,
 
 /**
  * gvdb_table_list:
- * @file: a #GvdbTable
+ * @table: a #GvdbTable
  * @key: a string
  *
  * List all of the keys that appear below @key.  The nesting of keys
@@ -501,7 +562,7 @@ gvdb_table_get_names (GvdbTable *table,
  * You should call g_strfreev() on the return result when you no longer
  * require it.
  *
- * Returns: a %NULL-terminated string array
+ * Returns: (transfer full): a %NULL-terminated string array
  **/
 gchar **
 gvdb_table_list (GvdbTable   *file,
@@ -550,10 +611,10 @@ gvdb_table_list (GvdbTable   *file,
 
 /**
  * gvdb_table_has_value:
- * @file: a #GvdbTable
+ * @table: a #GvdbTable
  * @key: a string
  *
- * Checks for a value named @key in @file.
+ * Checks for a value named @key in @table.
  *
  * Note: this function does not consider non-value nodes (other hash
  * tables, for example).
@@ -600,14 +661,14 @@ gvdb_table_value_from_item (GvdbTable                   *table,
 
 /**
  * gvdb_table_get_value:
- * @file: a #GvdbTable
+ * @table: a #GvdbTable
  * @key: a string
  *
- * Looks up a value named @key in @file.
+ * Looks up a value named @key in @table.
  *
  * If the value is not found then %NULL is returned.  Otherwise, a new
  * #GVariant instance is returned.  The #GVariant does not depend on the
- * continued existence of @file.
+ * continued existence of @table.
  *
  * You should call g_variant_unref() on the return result when you no
  * longer require it.
@@ -664,18 +725,18 @@ gvdb_table_get_raw_value (GvdbTable   *table,
 
 /**
  * gvdb_table_get_table:
- * @file: a #GvdbTable
+ * @table: a #GvdbTable
  * @key: a string
  *
- * Looks up the hash table named @key in @file.
+ * Looks up the hash table named @key in @table.
  *
  * The toplevel hash table in a #GvdbTable can contain reference to
  * child hash tables (and those can contain further references...).
  *
- * If @key is not found in @file then %NULL is returned.  Otherwise, a
+ * If @key is not found in @table then %NULL is returned.  Otherwise, a
  * new #GvdbTable is returned, referring to the child hashtable as
  * contained in the file.  This newly-created #GvdbTable does not depend
- * on the continued existence of @file.
+ * on the continued existence of @table.
  *
  * You should call gvdb_table_free() on the return result when you no
  * longer require it.
@@ -704,19 +765,6 @@ gvdb_table_get_table (GvdbTable   *file,
   gvdb_table_setup_root (new, &item->value.pointer);
 
   return new;
-}
-
-/**
- * gvdb_table_free:
- * @file: a #GvdbTable
- *
- * Frees @file.
- **/
-void
-gvdb_table_free (GvdbTable *file)
-{
-  g_bytes_unref (file->bytes);
-  g_slice_free (GvdbTable, file);
 }
 
 /**

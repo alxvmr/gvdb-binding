@@ -67,6 +67,15 @@ gvdb_item_free (gpointer data)
   g_slice_free (GvdbItem, item);
 }
 
+/**
+ * gvdb_hash_table_new:
+ * @parent: a #GHashTable
+ * @key: (nullable): the name in parent, or %NULL
+ *
+ *
+ *
+ * Returns: (transfer full): a #GHashTable hash_table
+ */
 GHashTable *
 gvdb_hash_table_new (GHashTable  *parent,
                      const gchar *name_in_parent)

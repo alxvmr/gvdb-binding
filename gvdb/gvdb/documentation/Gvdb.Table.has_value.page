@@ -27,13 +27,13 @@
 gboolean gvdb_table_has_value (GvdbTable* table,
                                const gchar* key);
   </code></synopsis>
-  <p>Checks for a value named <code>key</code> in @file.</p>  <p>Note: this function does not consider non-value nodes (other hash
+  <p>Checks for a value named <code>key</code> in <code>table</code>.</p>  <p>Note: this function does not consider non-value nodes (other hash
 tables, for example).</p>
 
 <terms>
 <item>
 <title><code>table</code></title>
-
+  <p>a <link xref="Gvdb.Table"/></p>
 </item>
 <item>
 <title><code>key</code></title>

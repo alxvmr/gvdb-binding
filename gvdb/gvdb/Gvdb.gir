@@ -6,6 +6,8 @@ and/or use gtk-doc annotations.  -->
             xmlns="http://www.gtk.org/introspection/core/1.0"
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
+  <include name="GLib" version="2.0"/>
+  <include name="Gio" version="2.0"/>
   <c:include name="gvdb-format.h"/>
   <namespace name="Gvdb"
              version="1.0"
@@ -45,9 +47,7 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </method>
-      <method name="set_value"
-              c:identifier="gvdb_item_set_value"
-              introspectable="0">
+      <method name="set_value" c:identifier="gvdb_item_set_value">
         <source-position filename="gvdb-builder.h" line="42"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -57,7 +57,7 @@ and/or use gtk-doc annotations.  -->
             <type name="Item" c:type="GvdbItem*"/>
           </instance-parameter>
           <parameter name="value" transfer-ownership="none">
-            <type c:type="GVariant*"/>
+            <type name="GLib.Variant" c:type="GVariant*"/>
           </parameter>
         </parameters>
       </method>
@@ -71,27 +71,28 @@ and/or use gtk-doc annotations.  -->
       <type name="gint" c:type="gint"/>
     </constant>
     <record name="Table" c:type="GvdbTable" disguised="1">
-      <source-position filename="gvdb-reader.h" line="42"/>
+      <source-position filename="gvdb-reader.h" line="44"/>
       <method name="free" c:identifier="gvdb_table_free">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="709">Frees @file.</doc>
-        <source-position filename="gvdb-reader.h" line="55"/>
+             line="774">Frees @table.</doc>
+        <source-position filename="gvdb-reader.h" line="57"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
           <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="776">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
         </parameters>
       </method>
-      <method name="get_names"
-              c:identifier="gvdb_table_get_names"
-              introspectable="0">
+      <method name="get_names" c:identifier="gvdb_table_get_names">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="334">Gets a list of all names contained in @table.
+             line="399">Gets a list of all names contained in @table.
 
 No call to gvdb_table_get_table(), gvdb_table_list() or
 gvdb_table_get_value() will succeed unless it is for one of the
@@ -100,11 +101,11 @@ names returned by this function.
 Note that some names that are returned may still fail for all of the
 above calls in the case of the corrupted file.  Note also that the
 returned strings may not be utf8.</doc>
-        <source-position filename="gvdb-reader.h" line="57"/>
-        <return-value>
+        <source-position filename="gvdb-reader.h" line="59"/>
+        <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="349">a %NULL-terminated list of strings, of length @length</doc>
+               line="414">a %NULL-terminated list of strings, of length @length</doc>
           <array length="0" zero-terminated="0" c:type="gchar**">
             <type name="utf8"/>
           </array>
@@ -113,7 +114,7 @@ returned strings may not be utf8.</doc>
           <instance-parameter name="table" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="336">a #GvdbTable</doc>
+                 line="401">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
           <parameter name="length"
@@ -124,38 +125,36 @@ returned strings may not be utf8.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="337">the number of items returned, or %NULL</doc>
+                 line="402">the number of items returned, or %NULL</doc>
             <type name="gsize" c:type="gsize*"/>
           </parameter>
         </parameters>
       </method>
-      <method name="get_raw_value"
-              c:identifier="gvdb_table_get_raw_value"
-              introspectable="0">
+      <method name="get_raw_value" c:identifier="gvdb_table_get_raw_value">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="641">Looks up a value named @key in @file.
+             line="706">Looks up a value named @key in @file.
 
 This call is equivalent to gvdb_table_get_value() except that it
 never byteswaps the value.</doc>
-        <source-position filename="gvdb-reader.h" line="66"/>
+        <source-position filename="gvdb-reader.h" line="68"/>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="651">a #GVariant, or %NULL</doc>
-          <type c:type="GVariant*"/>
+               line="716">a #GVariant, or %NULL</doc>
+          <type name="GLib.Variant" c:type="GVariant*"/>
         </return-value>
         <parameters>
           <instance-parameter name="table" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="643">a #GvdbTable</doc>
+                 line="708">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
           <parameter name="key" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="644">a string</doc>
+                 line="709">a string</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -165,65 +164,69 @@ never byteswaps the value.</doc>
               introspectable="0">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="665">Looks up the hash table named @key in @file.
+             line="730">Looks up the hash table named @key in @table.
 
 The toplevel hash table in a #GvdbTable can contain reference to
 child hash tables (and those can contain further references...).
 
-If @key is not found in @file then %NULL is returned.  Otherwise, a
+If @key is not found in @table then %NULL is returned.  Otherwise, a
 new #GvdbTable is returned, referring to the child hashtable as
 contained in the file.  This newly-created #GvdbTable does not depend
-on the continued existence of @file.
+on the continued existence of @table.
 
 You should call gvdb_table_free() on the return result when you no
 longer require it.</doc>
-        <source-position filename="gvdb-reader.h" line="63"/>
+        <source-position filename="gvdb-reader.h" line="65"/>
         <return-value>
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="683">a new #GvdbTable, or %NULL</doc>
+               line="748">a new #GvdbTable, or %NULL</doc>
           <type name="Table" c:type="GvdbTable*"/>
         </return-value>
         <parameters>
           <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="732">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
           <parameter name="key" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="668">a string</doc>
+                 line="733">a string</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
       </method>
-      <method name="get_value"
-              c:identifier="gvdb_table_get_value"
-              introspectable="0">
+      <method name="get_value" c:identifier="gvdb_table_get_value">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="601">Looks up a value named @key in @file.
+             line="666">Looks up a value named @key in @table.
 
 If the value is not found then %NULL is returned.  Otherwise, a new
 #GVariant instance is returned.  The #GVariant does not depend on the
-continued existence of @file.
+continued existence of @table.
 
 You should call g_variant_unref() on the return result when you no
 longer require it.</doc>
-        <source-position filename="gvdb-reader.h" line="69"/>
+        <source-position filename="gvdb-reader.h" line="71"/>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="615">a #GVariant, or %NULL</doc>
-          <type c:type="GVariant*"/>
+               line="680">a #GVariant, or %NULL</doc>
+          <type name="GLib.Variant" c:type="GVariant*"/>
         </return-value>
         <parameters>
           <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="668">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
           <parameter name="key" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="604">a string</doc>
+                 line="669">a string</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -231,25 +234,28 @@ longer require it.</doc>
       <method name="has_value" c:identifier="gvdb_table_has_value">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="551">Checks for a value named @key in @file.
+             line="616">Checks for a value named @key in @table.
 
 Note: this function does not consider non-value nodes (other hash
 tables, for example).</doc>
-        <source-position filename="gvdb-reader.h" line="73"/>
+        <source-position filename="gvdb-reader.h" line="75"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="561">%TRUE if @key is in the table</doc>
+               line="626">%TRUE if @key is in the table</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="618">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
           <parameter name="key" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="554">a string</doc>
+                 line="619">a string</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
@@ -257,31 +263,31 @@ tables, for example).</doc>
       <method name="is_valid" c:identifier="gvdb_table_is_valid">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="722">Checks if the table is still valid.
+             line="787">Checks if the table is still valid.
 
 An on-disk GVDB can be marked as invalid.  This happens when the file
 has been replaced.  The appropriate action is typically to reopen the
 file.</doc>
-        <source-position filename="gvdb-reader.h" line="76"/>
+        <source-position filename="gvdb-reader.h" line="78"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="732">%TRUE if @table is still valid</doc>
+               line="797">%TRUE if @table is still valid</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="table" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="724">a #GvdbTable</doc>
+                 line="789">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
         </parameters>
       </method>
-      <method name="list" c:identifier="gvdb_table_list" introspectable="0">
+      <method name="list" c:identifier="gvdb_table_list">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="487">List all of the keys that appear below @key.  The nesting of keys
+             line="552">List all of the keys that appear below @key.  The nesting of keys
 within the hash file is defined by the program that created the hash
 file.  One thing is constant: each item in the returned array can be
 concatenated to @key to obtain the full name of that key.
@@ -292,33 +298,34 @@ know this for yourself.
 
 You should call g_strfreev() on the return result when you no longer
 require it.</doc>
-        <source-position filename="gvdb-reader.h" line="60"/>
-        <return-value>
+        <source-position filename="gvdb-reader.h" line="62"/>
+        <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="504">a %NULL-terminated string array</doc>
+               line="569">a %NULL-terminated string array</doc>
           <array c:type="gchar**">
             <type name="utf8"/>
           </array>
         </return-value>
         <parameters>
           <instance-parameter name="table" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="gvdb-reader.c"
+                 line="554">a #GvdbTable</doc>
             <type name="Table" c:type="GvdbTable*"/>
           </instance-parameter>
           <parameter name="key" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="490">a string</doc>
+                 line="555">a string</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
         </parameters>
       </method>
-      <function name="get_contents"
-                c:identifier="gvdb_table_get_contents"
-                introspectable="0">
+      <function name="get_contents" c:identifier="gvdb_table_get_contents">
         <source-position filename="gvdb-builder.h" line="69"/>
-        <return-value>
-          <type c:type="GBytes*"/>
+        <return-value transfer-ownership="full">
+          <type name="GLib.Bytes" c:type="GBytes*"/>
         </return-value>
         <parameters>
           <parameter name="table" transfer-ownership="none">
@@ -338,7 +345,7 @@ require it.</doc>
                 throws="1">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="186">Creates a new #GvdbTable using the #GMappedFile for @filename as the
+             line="251">Creates a new #GvdbTable using the #GMappedFile for @filename as the
 #GBytes.
 
 This function will fail if the file cannot be opened.
@@ -346,24 +353,24 @@ In that case, the #GError that is returned will be an error from
 g_mapped_file_new().
 
 An empty or corrupt file will result in %G_FILE_ERROR_INVAL.</doc>
-        <source-position filename="gvdb-reader.h" line="51"/>
+        <source-position filename="gvdb-reader.h" line="53"/>
         <return-value>
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="201">a new #GvdbTable</doc>
+               line="266">a new #GvdbTable</doc>
           <type name="Table" c:type="GvdbTable*"/>
         </return-value>
         <parameters>
           <parameter name="filename" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="188">a filename</doc>
+                 line="253">a filename</doc>
             <type name="utf8" c:type="const gchar*"/>
           </parameter>
           <parameter name="trusted" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="189">if the contents of @bytes are trusted</doc>
+                 line="254">if the contents of @bytes are trusted</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
@@ -374,31 +381,31 @@ An empty or corrupt file will result in %G_FILE_ERROR_INVAL.</doc>
                 throws="1">
         <doc xml:space="preserve"
              filename="gvdb-reader.c"
-             line="125">Creates a new #GvdbTable from the contents of @bytes.
+             line="190">Creates a new #GvdbTable from the contents of @bytes.
 
 This call can fail if the header contained in @bytes is invalid or if @bytes
 is empty; if so, %G_FILE_ERROR_INVAL will be returned.
 
 You should call gvdb_table_free() on the return result when you no
 longer require it.</doc>
-        <source-position filename="gvdb-reader.h" line="47"/>
+        <source-position filename="gvdb-reader.h" line="49"/>
         <return-value>
           <doc xml:space="preserve"
                filename="gvdb-reader.c"
-               line="139">a new #GvdbTable</doc>
+               line="204">a new #GvdbTable</doc>
           <type name="Table" c:type="GvdbTable*"/>
         </return-value>
         <parameters>
           <parameter name="bytes" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="127">the #GBytes with the data</doc>
-            <type c:type="GBytes*"/>
+                 line="192">the #GBytes with the data</doc>
+            <type name="GLib.Bytes" c:type="GBytes*"/>
           </parameter>
           <parameter name="trusted" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="gvdb-reader.c"
-                 line="128">if the contents of @bytes are trusted</doc>
+                 line="193">if the contents of @bytes are trusted</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
@@ -426,8 +433,7 @@ longer require it.</doc>
         </parameters>
       </function>
       <function name="write_contents_async"
-                c:identifier="gvdb_table_write_contents_async"
-                introspectable="0">
+                c:identifier="gvdb_table_write_contents_async">
         <source-position filename="gvdb-builder.h" line="57"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -445,11 +451,19 @@ longer require it.</doc>
           <parameter name="byteswap" transfer-ownership="none">
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
-          <parameter name="cancellable" transfer-ownership="none">
-            <type c:type="GCancellable*"/>
+          <parameter name="cancellable"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1">
+            <type name="Gio.Cancellable" c:type="GCancellable*"/>
           </parameter>
-          <parameter name="callback" transfer-ownership="none">
-            <type c:type="GAsyncReadyCallback"/>
+          <parameter name="callback"
+                     transfer-ownership="none"
+                     nullable="1"
+                     allow-none="1"
+                     scope="async"
+                     closure="5">
+            <type name="Gio.AsyncReadyCallback" c:type="GAsyncReadyCallback"/>
           </parameter>
           <parameter name="user_data"
                      transfer-ownership="none"
@@ -461,7 +475,6 @@ longer require it.</doc>
       </function>
       <function name="write_contents_finish"
                 c:identifier="gvdb_table_write_contents_finish"
-                introspectable="0"
                 throws="1">
         <source-position filename="gvdb-builder.h" line="64"/>
         <return-value transfer-ownership="none">
@@ -475,7 +488,7 @@ longer require it.</doc>
             </type>
           </parameter>
           <parameter name="result" transfer-ownership="none">
-            <type c:type="GAsyncResult*"/>
+            <type name="Gio.AsyncResult" c:type="GAsyncResult*"/>
           </parameter>
         </parameters>
       </function>
@@ -599,11 +612,12 @@ longer require it.</doc>
         </parameter>
       </parameters>
     </function>
-    <function name="hash_table_new"
-              c:identifier="gvdb_hash_table_new"
-              introspectable="0">
+    <function name="hash_table_new" c:identifier="gvdb_hash_table_new">
       <source-position filename="gvdb-builder.h" line="30"/>
-      <return-value>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="gvdb-builder.c"
+             line="77">a #GHashTable hash_table</doc>
         <type name="GLib.HashTable" c:type="GHashTable*">
           <type name="gpointer" c:type="gpointer"/>
           <type name="gpointer" c:type="gpointer"/>
@@ -611,13 +625,41 @@ longer require it.</doc>
       </return-value>
       <parameters>
         <parameter name="parent" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gvdb-builder.c"
+               line="72">a #GHashTable</doc>
           <type name="GLib.HashTable" c:type="GHashTable*">
             <type name="gpointer" c:type="gpointer"/>
             <type name="gpointer" c:type="gpointer"/>
           </type>
         </parameter>
-        <parameter name="key" transfer-ownership="none">
+        <parameter name="key"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <doc xml:space="preserve"
+               filename="gvdb-builder.c"
+               line="73">the name in parent, or %NULL</doc>
           <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="table_get_contents"
+              c:identifier="gvdb_table_get_contents"
+              moved-to="Table.get_contents">
+      <source-position filename="gvdb-builder.h" line="69"/>
+      <return-value transfer-ownership="full">
+        <type name="GLib.Bytes" c:type="GBytes*"/>
+      </return-value>
+      <parameters>
+        <parameter name="table" transfer-ownership="none">
+          <type name="GLib.HashTable" c:type="GHashTable*">
+            <type name="gpointer" c:type="gpointer"/>
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="byteswap" transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
         </parameter>
       </parameters>
     </function>
@@ -641,6 +683,68 @@ longer require it.</doc>
         </parameter>
         <parameter name="byteswap" transfer-ownership="none">
           <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="table_write_contents_async"
+              c:identifier="gvdb_table_write_contents_async"
+              moved-to="Table.write_contents_async">
+      <source-position filename="gvdb-builder.h" line="57"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="table" transfer-ownership="none">
+          <type name="GLib.HashTable" c:type="GHashTable*">
+            <type name="gpointer" c:type="gpointer"/>
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="filename" transfer-ownership="none">
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="byteswap" transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+        <parameter name="cancellable"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <type name="Gio.Cancellable" c:type="GCancellable*"/>
+        </parameter>
+        <parameter name="callback"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1"
+                   scope="async"
+                   closure="5">
+          <type name="Gio.AsyncReadyCallback" c:type="GAsyncReadyCallback"/>
+        </parameter>
+        <parameter name="user_data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="table_write_contents_finish"
+              c:identifier="gvdb_table_write_contents_finish"
+              moved-to="Table.write_contents_finish"
+              throws="1">
+      <source-position filename="gvdb-builder.h" line="64"/>
+      <return-value transfer-ownership="none">
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+      <parameters>
+        <parameter name="table" transfer-ownership="none">
+          <type name="GLib.HashTable" c:type="GHashTable*">
+            <type name="gpointer" c:type="gpointer"/>
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="result" transfer-ownership="none">
+          <type name="Gio.AsyncResult" c:type="GAsyncResult*"/>
         </parameter>
       </parameters>
     </function>

@@ -21,19 +21,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="synopsis"><div class="inner"><div class="region"><div class="contents"><div class="code"><pre class="contents"><code class="syntax language-c">GVariant* gvdb_table_get_value (GvdbTable* table,
                                 const gchar* key);
   </code></pre></div></div></div></div></div>
-<p class="p">Looks up a value named <span class="code">key</span> in @file.</p>
+<p class="p">Looks up a value named <span class="code">key</span> in <span class="code">table</span>.</p>
 <p class="p">If the value is not found then <span class="code">NULL</span> is returned.  Otherwise, a new
-#GVariant instance is returned.  The #GVariant does not depend on the
-continued existence of @file.</p>
+<span class="link"><a href="../GLib-2.0/GLib.Variant.html" title="../GLib-2.0/GLib.Variant.html">GLib.Variant</a></span> instance is returned.  The <span class="link"><a href="../GLib-2.0/GLib.Variant.html" title="../GLib-2.0/GLib.Variant.html">GLib.Variant</a></span> does not depend on the
+continued existence of <span class="code">table</span>.</p>
 <p class="p">You should call g_variant_unref() on the return result when you no
 longer require it.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms"><span class="code">table</span></dt>
-<dd class="terms"></dd>
+<dd class="terms"><p class="p">a <span class="link"><a href="Gvdb.Table.html" title="Gvdb.Table">Gvdb.Table</a></span></p></dd>
 <dt class="terms"><span class="code">key</span></dt>
 <dd class="terms"><p class="p">a string</p></dd>
 <dt class="terms"><span class="code">Returns</span></dt>
-<dd class="terms"><p class="p">a #GVariant, or <span class="code">NULL</span></p></dd>
+<dd class="terms"><p class="p">a <span class="link"><a href="../GLib-2.0/GLib.Variant.html" title="../GLib-2.0/GLib.Variant.html">GLib.Variant</a></span>, or <span class="code">NULL</span></p></dd>
 </dl></div></div></div>
 </div>
 <section class="links" role="navigation"><div class="inner">

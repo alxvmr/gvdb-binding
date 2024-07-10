@@ -27,17 +27,17 @@
 GvdbTable* gvdb_table_get_table (GvdbTable* table,
                                  const gchar* key);
   </code></synopsis>
-  <p>Looks up the hash table named <code>key</code> in @file.</p>  <p>The toplevel hash table in a <link xref="Gvdb.Table"/> can contain reference to
-child hash tables (and those can contain further references...).</p>  <p>If <code>key</code> is not found in @file then <code>NULL</code> is returned.  Otherwise, a
+  <p>Looks up the hash table named <code>key</code> in <code>table</code>.</p>  <p>The toplevel hash table in a <link xref="Gvdb.Table"/> can contain reference to
+child hash tables (and those can contain further references...).</p>  <p>If <code>key</code> is not found in <code>table</code> then <code>NULL</code> is returned.  Otherwise, a
 new <link xref="Gvdb.Table"/> is returned, referring to the child hashtable as
 contained in the file.  This newly-created <link xref="Gvdb.Table"/> does not depend
-on the continued existence of @file.</p>  <p>You should call <link xref="Gvdb.Table.free"/> on the return result when you no
+on the continued existence of <code>table</code>.</p>  <p>You should call <link xref="Gvdb.Table.free"/> on the return result when you no
 longer require it.</p>
 
 <terms>
 <item>
 <title><code>table</code></title>
-
+  <p>a <link xref="Gvdb.Table"/></p>
 </item>
 <item>
 <title><code>key</code></title>

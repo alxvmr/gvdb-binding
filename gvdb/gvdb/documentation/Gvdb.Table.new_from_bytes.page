@@ -34,7 +34,7 @@ longer require it.</p>
 <terms>
 <item>
 <title><code>bytes</code></title>
-  <p>the #GBytes with the data</p>
+  <p>the <link href="../GLib-2.0/GLib.Bytes.html">GLib.Bytes</link> with the data</p>
 </item>
 <item>
 <title><code>trusted</code></title>

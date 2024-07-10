@@ -22,12 +22,12 @@
   <synopsis><code mime="text/x-csrc">
 void gvdb_table_free (GvdbTable* table);
   </code></synopsis>
-  <p>Frees @file.</p>
+  <p>Frees <code>table</code>.</p>
 
 <terms>
 <item>
 <title><code>table</code></title>
-
+  <p>a <link xref="Gvdb.Table"/></p>
 </item>
 <item>
 <title><code>Returns</code></title>
