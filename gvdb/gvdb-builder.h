@@ -23,8 +23,22 @@
 #define __gvdb_builder_h__
 
 #include <gio/gio.h>
+#include <glib-object.h>
 
 typedef struct _GvdbItem GvdbItem;
+
+#define GVDB_TYPE_TABLE (gvdb_item_get_type())
+
+GType                   gvdb_item_get_type                              (void);
+
+G_GNUC_INTERNAL
+GvdbItem *              gvdb_item_copy                                  (GvdbItem      *data);
+
+G_GNUC_INTERNAL
+GvdbItem *              gvdb_item_new                                   (void);
+
+G_GNUC_INTERNAL
+void                    gvdb_item_custom_free                           (GvdbItem      *data);
 
 G_GNUC_INTERNAL
 GHashTable *            gvdb_hash_table_new                             (GHashTable    *parent,

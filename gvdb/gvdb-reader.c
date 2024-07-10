@@ -24,6 +24,8 @@
 
 #include <string.h>
 
+G_DEFINE_BOXED_TYPE (GvdbTable, gvdb_table, gvdb_table_copy, gvdb_table_free)
+
 struct _GvdbTable {
   GBytes *bytes;
 
@@ -71,7 +73,7 @@ gvdb_table_copy (GvdbTable *table)
 }
 
 GvdbTable*
-gvdb_table_empty_new(void)
+gvdb_table_empty_new()
 {
   GvdbTable *table = g_new0(GvdbTable, 1);
   table->bytes = NULL;
@@ -89,21 +91,6 @@ gvdb_table_empty_new(void)
 
   return table;
 }
-
-/**
- * gvdb_table_free:
- * @table: a #GvdbTable
- *
- * Frees @table.
- **/
-void
-gvdb_table_free (GvdbTable *file)
-{
-  g_bytes_unref (file->bytes);
-  g_slice_free (GvdbTable, file);
-}
-
-G_DEFINE_BOXED_TYPE (GvdbTable, gvdb_table, gvdb_table_copy, gvdb_table_free)
 
 static const gchar *
 gvdb_table_item_get_key (GvdbTable                   *file,
@@ -765,6 +752,19 @@ gvdb_table_get_table (GvdbTable   *file,
   gvdb_table_setup_root (new, &item->value.pointer);
 
   return new;
+}
+
+/**
+ * gvdb_table_free:
+ * @table: a #GvdbTable
+ *
+ * Frees @table.
+ **/
+void
+gvdb_table_free (GvdbTable *file)
+{
+  g_bytes_unref (file->bytes);
+  g_slice_free (GvdbTable, file);
 }
 
 /**

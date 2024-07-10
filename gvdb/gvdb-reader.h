@@ -40,9 +40,12 @@
 # define GVDB_GNUC_WEAK
 #endif
 
-#define GVDB_TYPE_TABLE gvdb_table_get_type()
-
 typedef struct _GvdbTable GvdbTable;
+
+#define GVDB_TYPE_TABLE (gvdb_table_get_type())
+
+GType 
+gvdb_table_get_type(void);
 
 G_BEGIN_DECLS
 
@@ -50,8 +53,8 @@ G_GNUC_INTERNAL GVDB_GNUC_WEAK
 GvdbTable*              gvdb_table_copy                                 (GvdbTable    *table);
 G_GNUC_INTERNAL GVDB_GNUC_WEAK
 GvdbTable*              gvdb_table_empty_new                            (void);
-G_GNUC_INTERNAL GVDB_GNUC_WEAK
-GType                   gvdb_table_get_type                             (void) G_GNUC_CONST;
+// G_GNUC_INTERNAL GVDB_GNUC_WEAK
+// GType                   gvdb_table_get_type                             (void) G_GNUC_CONST;
 
 G_GNUC_INTERNAL GVDB_GNUC_WEAK
 GvdbTable *             gvdb_table_new_from_bytes                       (GBytes       *bytes,

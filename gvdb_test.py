@@ -31,4 +31,7 @@ void read_bin(const char *path){
 
 if (GLib.file_get_contents (path_bin)[0]):
     bytes = GLib.file_get_contents (path_bin)[1]
-    # table = Gvdb.Table.new_from_bytes(bytes, False)     // AttributeError: type object 'Table' has no attribute 'new_from_bytes' //
+    table = Gvdb.Table.new_from_bytes(bytes, False)     # gi.repository.GLib.GError: g-invoke-error-quark: 
+                                                        #Could not locate gvdb_table_new_from_bytes: 
+                                                        # 'gvdb_table_new_from_bytes': /home/DOMAIN.TEST/administrator/Рабочий стол/gvdb_pygobject/pygobject/bin/python3: 
+                                                        # undefined symbol: gvdb_table_new_from_bytes (1)

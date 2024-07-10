@@ -29,6 +29,7 @@
 #endif
 #include <string.h>
 
+G_DEFINE_BOXED_TYPE (GvdbItem, gvdb_item, gvdb_item_copy, gvdb_item_custom_free)
 
 struct _GvdbItem
 {
@@ -50,6 +51,58 @@ struct _GvdbItem
   /* or this: */
   GvdbItem *child;
 };
+
+void
+gvdb_item_custom_free (GvdbItem *data)
+{
+    g_free (data->key);
+
+  if (data->value)
+    g_variant_unref (data->value);
+
+  if (data->table)
+    g_hash_table_unref (data->table);
+
+  g_slice_free (GvdbItem, data);
+}
+
+GvdbItem*
+gvdb_item_new ()
+{
+  GvdbItem *data = g_new0(GvdbItem, 1);
+  data->key = NULL;
+  data->hash_value = 0;
+  data->assigned_index.value = 0;
+  data->parent = NULL;
+  data->sibling = NULL;
+  data->next=NULL;
+  data->value = NULL;
+  data->table = NULL;
+  data->child = NULL;
+
+  return data;
+}
+
+GvdbItem*
+gvdb_item_copy (GvdbItem *data)
+{
+  GvdbItem *new;
+
+  g_return_val_if_fail (data != NULL, NULL);
+
+  new = g_slice_new0 (GvdbItem);
+  new->key = data->key;
+  new->hash_value = data->hash_value;
+  new->assigned_index = data->assigned_index;
+  new->parent = data->parent;
+  new->sibling = data->sibling;
+  new->next = data->next;
+  new->value = data->value;
+  new->table = data->table;
+  new->child = data->child;
+
+  return new;
+}
 
 static void
 gvdb_item_free (gpointer data)
