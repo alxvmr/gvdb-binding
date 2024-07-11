@@ -16,8 +16,6 @@ You can generate the `.typelib` file automatically by using the `g-ir-compiler` 
 ---
 ## Preparing the environment
 
-![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) - means that the file is already in the repository, the playback step is given to understand the process.
-
 
 ### Installation of necessary packages (ALT Linux p10)
 
@@ -37,6 +35,14 @@ apt-get install libcairo-gobject-devel
 apt-get install meson
 ```
 
+### Compilation of libgvdb library (.so)
+To compile the library from the terminal (`gvdb/gvdb/`), run the following commands:
+```bash
+gcc -fPIC -c gvdb*.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include/
+
+gcc -shared -o libgvdb.so gvdb*.o /usr/lib64/libglib-2.0.so /usr/lib64/libgio-2.0.so /usr/lib64/libgobject-2.0.so
+```
+
 ### Activating a Python virtual environment for PyGObject
 From the root of the repository, execute the commands:
 
@@ -47,14 +53,14 @@ pip install --upgrade pip
 python3 -m pip install PyGObject
 ```
 
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) Compiling the .gir file
+### Compiling the .gir file
 Execute the command from the `./gvdb/gvdb` directory (where gvdb.so is located):
 
 ```bash
 LD_LIBRARY_PATH=./ g-ir-scanner --namespace=Gvdb --nsversion=1.0 --include GLib-2.0 --include Gio-2.0 -L . --library=libgvdb.so --accept-unprefixed --output=Gvdb.gir --c-include="gvdb-format.h" *.h *.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include --warn-all
 ```
 
-### ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)Creating a binary file (.gir -> .typelib)
+### Creating a binary file (.gir -> .typelib)
 Execute the command from the `./gvdb/gvdb` directory (where Gvdb.gir is located):
 
 ```bash
