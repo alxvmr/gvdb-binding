@@ -1,2 +1,6 @@
-*.o
-g-ir-cpp-*.c
+/gvdb/gvdb/*.o
+/gvdb/gvdb/g-ir-cpp-*.c
+/gvdb/gvdb/*.gir
+/gvdb/gvdb/*.typelib
+/gvdb/gvdb/*.js
+/gvdb/gvdb/*.so
