@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page id="Gvdb.Table.is_valid"
+      type="topic"
+      style="method"
+      xmlns="http://projectmallard.org/1.0/"
+      xmlns:api="http://projectmallard.org/experimental/api/"
+      xmlns:ui="http://projectmallard.org/1.0/ui/">
+  <info>
+    <link xref="Gvdb.Table" group="method" type="guide"/>
+    <api:function>
+      <api:returns>
+        <api:type>gboolean</api:type>
+      </api:returns>
+      <api:name>gvdb_table_is_valid</api:name>
+      <api:arg>
+        <api:type>GvdbTable*</api:type>
+        <api:name>table</api:name>
+      </api:arg>
+    </api:function>
+  </info>
+  <title>gvdb_table_is_valid</title>
+  <synopsis><code mime="text/x-csrc">
+gboolean gvdb_table_is_valid (GvdbTable* table);
+  </code></synopsis>
+  <p>Checks if the table is still valid.</p>  <p>An on-disk GVDB can be marked as invalid.  This happens when the file
+has been replaced.  The appropriate action is typically to reopen the
+file.</p>
+
+<terms>
+<item>
+<title><code>table</code></title>
+  <p>a <link xref="Gvdb.Table"/></p>
+</item>
+<item>
+<title><code>Returns</code></title>
+  <p><code>TRUE</code> if <code>table</code> is still valid</p>
+</item>
+</terms>
+
+</page>
