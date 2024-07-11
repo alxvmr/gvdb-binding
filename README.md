@@ -86,11 +86,26 @@ from gi.repository import Gvdb
 ```
  ---
 ###  Test case
-The repository contains the file `gvdb_test.py`, where the available methods of the bundled library are tested.  There is a problem - not all methods are available (details in `gvdb_test.py`).
+The repository contains the file `gvdb_test.py`, where the available methods of the bundled library are tested.
 
-Assumption - `g-ir-scanner` incorrectly analyzed information about the gvdb library.
+You should run the code by setting the LD_LIBRARY_PATH environment variable:
+```bash
+LD_LIBRARY_PATH=/path/to/libgvdb.so
+```
 
-Solution:
-1. Manually edit the `.gir`
-2. Deal with incorrect behavior of auto-generation (`g-ir-scanner`)
-3. :white_check_mark: Add annotations for `.gir` to the sources (`.c` files)
+The example is for the functionality we need to develop - reading policy binary files. **Execution result**:
+```bash
+/Software/BaseALT/Policies/gsettings/                                          None                                                                                                      
+/Software/BaseALT/Policies/gsettings/org.mate.background.color-shading-type    'vertical-gradient'                                                                                       
+/Software/BaseALT/                                                             None                                                                                                      
+/Software/BaseALT/Policies/ReadQueue/User/0                                    "('qwe1', '/var/cache/samba/gpo_cache/DOMAIN.TEST/POLICIES/{506A92C2-9C84-40CD-A950-FFEE42A9B0A5}', 131074)"
+/Software/                                                                     None                                                                                                      
+/Software/BaseALT/Policies/ReadQueue/User/                                     None                                                                                                      
+/Software/BaseALT/Policies/ReadQueue/                                          None                                                                                                      
+/                                                                              None                                                                                                      
+/Software/BaseALT/Policies/                                                    Non
+```
+---
+### Documentation
+> [!NOTE]
+> Add a section on autogeneration of documentation
