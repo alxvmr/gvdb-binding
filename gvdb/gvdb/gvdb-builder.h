@@ -27,7 +27,7 @@
 
 typedef struct _GvdbItem GvdbItem;
 
-#define GVDB_TYPE_TABLE (gvdb_item_get_type())
+#define GVDB_TYPE_ITEM (gvdb_item_get_type())
 
 GType                   gvdb_item_get_type                              (void);
 

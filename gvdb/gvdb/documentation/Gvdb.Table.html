@@ -19,8 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="region">
 <div class="contents pagewide">
 <div class="links topiclinks"><div class="inner">
+<div class="title title-links"><h2><span class="title">Constructors</span></h2></div>
+<div class="region"><div class="synopsis"><pre class="contents"><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GvdbTable*          <a href="Gvdb.Table.empty_new.html" title="gvdb_table_empty_new">gvdb_table_empty_new</a>                    (void);
+</div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GvdbTable*          <a href="Gvdb.Table.new.html" title="gvdb_table_new">gvdb_table_new</a>                          (const gchar*filename,
+                                                             gboolean trusted);
+</div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GvdbTable*          <a href="Gvdb.Table.new_from_bytes.html" title="gvdb_table_new_from_bytes">gvdb_table_new_from_bytes</a>               (GBytes* bytes,
+                                                             gboolean trusted);
+</div></pre></div></div>
+</div></div>
+<div class="links topiclinks"><div class="inner">
 <div class="title title-links"><h2><span class="title">Methods</span></h2></div>
-<div class="region"><div class="synopsis"><pre class="contents"><div xmlns:api="http://projectmallard.org/experimental/api/" class="">void                <a href="Gvdb.Table.free.html" title="gvdb_table_free">gvdb_table_free</a>                         (GvdbTable* table);
+<div class="region"><div class="synopsis"><pre class="contents"><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GvdbTable*          <a href="Gvdb.Table.copy.html" title="gvdb_table_copy">gvdb_table_copy</a>                         (GvdbTable* table);
+</div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">void                <a href="Gvdb.Table.free.html" title="gvdb_table_free">gvdb_table_free</a>                         (GvdbTable* table);
 </div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">utf8*               <a href="Gvdb.Table.get_names.html" title="gvdb_table_get_names">gvdb_table_get_names</a>                    (GvdbTable* table,
                                                              gsize* length);
 </div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GVariant*           <a href="Gvdb.Table.get_raw_value.html" title="gvdb_table_get_raw_value">gvdb_table_get_raw_value</a>                (GvdbTable* table,
@@ -40,10 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="title title-links"><h2><span class="title">Static Functions</span></h2></div>
 <div class="region"><div class="synopsis"><pre class="contents"><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GBytes*             <a href="Gvdb.Table.get_contents.html" title="gvdb_table_get_contents">gvdb_table_get_contents</a>                 (GHashTable* table,
                                                              gboolean byteswap);
-</div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GvdbTable*          <a href="Gvdb.Table.new.html" title="gvdb_table_new">gvdb_table_new</a>                          (const gchar*filename,
-                                                             gboolean trusted);
-</div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">GvdbTable*          <a href="Gvdb.Table.new_from_bytes.html" title="gvdb_table_new_from_bytes">gvdb_table_new_from_bytes</a>               (GBytes* bytes,
-                                                             gboolean trusted);
 </div><div xmlns:api="http://projectmallard.org/experimental/api/" class="">gboolean            <a href="Gvdb.Table.write_contents.html" title="gvdb_table_write_contents">gvdb_table_write_contents</a>               (GHashTable* table,
                                                              const gchar*filename,
                                                              gboolean byteswap);
