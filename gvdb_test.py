@@ -7,31 +7,34 @@ from gi.repository import GLib
 
 path_bin = "/etc/dconf/db/policy1506600500"
 
-'''
-TODO: Translate code into Python
+def show(names, values):
+    max_n = -1
+    max_v = -1
+    for n, v in zip(names, values):
+        if n:
+          l = len(n)
+          if l > max_n:
+              max_n = l
+        if v:
+            l = len(v)
+            if l > max_v:
+                max_v = l
+    max_n += 3
+    for n, v in zip(names, values):
+        print("{:{max_n}s} {:{max_v}s}".format(str(n), str(v), max_n=max_n, max_v=max_v))
 
-void read_bin(const char *path){
-    GError my_error = NULL;
-    GvdbTable *table = NULL;
-    gchar *contents;
-    gsize size;
 
-    if (g_file_get_contents (path, &contents, &size, &my_error))
-    {
-      GBytes *bytes;
+if __name__ == "__main__":
+  if (GLib.file_get_contents (path_bin)[0]):
+      local_error = GLib.GError(None)
+      bytes = GLib.Bytes.new(GLib.file_get_contents (path_bin)[1])
+      table = Gvdb.Table.new_from_bytes(bytes, True)
 
-      bytes = g_bytes_new_take (contents, size);
-      table = gvdb_table_new_from_bytes (bytes, FALSE, &my_error);
-      g_bytes_unref (bytes);
-    }
-    printf("Hello world!");
+      name_list = Gvdb.Table.get_names(table)
+      value_list = []
+      for name in name_list:
+          value = Gvdb.Table.get_value(table, name)
+          value_list.append(value)
 
-}
-'''
-
-if (GLib.file_get_contents (path_bin)[0]):
-    bytes = GLib.file_get_contents (path_bin)[1]
-    table = Gvdb.Table.new_from_bytes(bytes, False)     # gi.repository.GLib.GError: g-invoke-error-quark: 
-                                                        #Could not locate gvdb_table_new_from_bytes: 
-                                                        # 'gvdb_table_new_from_bytes': /home/DOMAIN.TEST/administrator/Рабочий стол/gvdb_pygobject/pygobject/bin/python3: 
-                                                        # undefined symbol: gvdb_table_new_from_bytes (1)
+      show(name_list, value_list)
+    
