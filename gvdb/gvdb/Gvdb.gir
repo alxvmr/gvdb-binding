@@ -11,7 +11,7 @@ and/or use gtk-doc annotations.  -->
   <c:include name="gvdb-format.h"/>
   <namespace name="Gvdb"
              version="1.0"
-             shared-library=""
+             shared-library="libgvdb.so"
              c:identifier-prefixes="Gvdb"
              c:symbol-prefixes="gvdb">
     <record name="Item"
