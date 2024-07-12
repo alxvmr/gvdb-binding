@@ -25,6 +25,7 @@ GVDB (GVariant Database) is a simple database file format that stores a mapping 
 %package devel
 Summary: Headers for developing programs that will use gvdb
 Group: Development/C
+Requires: %name = %epoch:%version-%release
 
 %description devel
 GVDB is a library for working with the GVariant database.
@@ -34,12 +35,13 @@ applications that use the gvdb library.
 %package gir
 Summary: GObject introspection data for the Gvdb-1.0 library
 Group: System/Libraries
+Requires: %name = %epoch:%version-%release
 
 %description gir
 GObject introspection data for the Gvdb-1.0 library
 
 %prep
-%setup
+%setup -q -n gvdb-%version
 
 %build
 cd gvdb
