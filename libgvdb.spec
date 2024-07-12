@@ -44,6 +44,7 @@ GObject introspection data for the Gvdb-1.0 library
 %setup -q -n gvdb-%version
 
 %build
+cd gvdb
 %meson \
         -Dfreetype=enabled \
         -Dfontconfig=enabled \
@@ -59,5 +60,23 @@ GObject introspection data for the Gvdb-1.0 library
         -Dtests=disabled \
 %meson_build
 
+cd gvdb
+LD_LIBRARY_PATH=./ g-ir-scanner --namespace=Gvdb --nsversion=1.0 --include GLib-2.0 --include Gio-2.0 -L . --library=libgvdb.so --accept-unprefixed --output=Gvdb.gir --c-include="gvdb-format.h" *.h *.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include --warn-all
+g-ir-compiler Gvdb.gir -o Gvdb-1.0.typelib 
+
 %install
 %meson_install
+
+%files
+%_libdir/%name.so.*
+
+%files devel
+%_includedir/gvdb
+%_libdir/%name.so
+
+%files gir
+%_typelibdir/*.typelib
+%changelog
+* Fri Jul 12 2024 Maria Alexeeva <alxvmr@altlinux.org> 1:1.0.0-alt1
+- first build
+
