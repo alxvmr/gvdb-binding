@@ -60,10 +60,10 @@ cd gvdb
         -Dtests=disabled \
 %meson_build
 
-echo $(ls)
 cd gvdb
-LD_LIBRARY_PATH=./ g-ir-scanner --namespace=Gvdb --nsversion=1.0 --include GLib-2.0 --include Gio-2.0 -L . --library=../build/libgvdb.so --accept-unprefixed --output=Gvdb.gir --c-include="gvdb-format.h" *.h *.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include --warn-all
+LD_LIBRARY_PATH=./ g-ir-scanner --namespace=Gvdb --nsversion=1.0 --include GLib-2.0 --include Gio-2.0 -L . --library=../x86_64-alt-linux/libgvdb.so --accept-unprefixed --output=Gvdb.gir --c-include="gvdb-format.h" *.h *.c -I/usr/include/glib-2.0/ -I/usr/include/gio-unix-2.0/ -I/usr/lib64/glib-2.0/include --warn-all
 g-ir-compiler Gvdb.gir -o Gvdb-1.0.typelib 
+cp Gvdb-1.0.typelib %_typelibdir
 cd ..
 
 %install
