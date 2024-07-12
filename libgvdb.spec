@@ -41,7 +41,7 @@ Requires: %name = %epoch:%version-%release
 GObject introspection data for the Gvdb-1.0 library
 
 %prep
-%setup -q -n gvdb-%version
+%setup
 
 %build
 cd gvdb

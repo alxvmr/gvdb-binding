@@ -1,1 +1,1 @@
-tar: @version@:. name=gvdb-@version@
+tar: .
