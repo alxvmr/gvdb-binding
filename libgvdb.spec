@@ -11,7 +11,7 @@ License: LGPLv2.1
 Group: System/Libraries
 URL: https://gitlab.gnome.org/GNOME/gvdb
 
-Source: gvdb-%version.tar
+Source: libgvdb.tar
 
 BuildRequires: git gitk cmake rpm-build
 BuildRequires: python3-module-pygobject-devel python3-module-pygobject3 python3-devel
