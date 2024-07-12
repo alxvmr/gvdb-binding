@@ -6,15 +6,18 @@ project('gvdb', 'c',
     meson_version: '>=0.54.0',
 )
 
-libgvdb_sources = files(
-    'gvdb/gvdb-builder.c',
-    'gvdb/gvdb-reader.c',
-)
+glib_dep = dependency('glib-2.0')
+gio_dep = dependency('gio-2.0')
+gobject_dep = dependency('gobject-2.0')
 
-gvdb_dep = declare_dependency(
-  sources: libgvdb_sources,
-  include_directories: include_directories('.'),
-)
-meson.override_dependency('gvdb', gvdb_dep)
+gvdb_sources = files('gvdb/gvdb-builder.c',
+                     'gvdb/gvdb-reader.c')
 
-subdir('gvdb/tests')
+gvdb_lib = shared_library('gvdb',
+  gvdb_sources,
+  c_args : ['-fPIC'],
+  dependencies : [glib_dep, gio_dep, gobject_dep],
+  link_args : ['-shared'],
+  version : '1.0',
+  install : true
+)
