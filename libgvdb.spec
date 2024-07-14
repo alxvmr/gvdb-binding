@@ -68,6 +68,10 @@ cd ..
 
 %install
 cd gvdb
+
+# Create .../usr/include/gvdb and move headers file
+mkdir -p %buildroot/%_includedir/%name
+
 %meson_install
 
 %files
