@@ -70,7 +70,7 @@ cd ..
 cd gvdb
 
 # Create .../usr/include/gvdb and move headers file
-mkdir -p %buildroot/%_includedir/%name
+mkdir -p %buildroot/%_includedir/gvdb
 
 %meson_install
 
