@@ -67,6 +67,7 @@ cp Gvdb-1.0.typelib %_typelibdir
 cd ..
 
 %install
+cd gvdb
 %meson_install
 
 %files
