@@ -78,7 +78,11 @@ cp Gvdb-1.0.typelib %buildroot%_typelibdir
 mkdir -p %buildroot/%_includedir/gvdb
 cp *.h %buildroot/%_includedir/gvdb
 
-cd ..
+cd documentation
+mkdir -p %_datadir/gvdb-doc/html/gvdb
+cp -r /. %_datadir/gvdb-doc/html/gvdb
+cd ../..
+
 %meson_install
 
 %files
