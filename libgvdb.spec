@@ -70,7 +70,6 @@ cd gvdb
 mkdir -p %buildroot/%_typelibdir
 cp Gvdb-1.0.typelib %buildroot%_typelibdir
 
-# Create .../usr/include/gvdb and move headers file
 mkdir -p %buildroot/%_includedir/gvdb
 cp *.h %buildroot/%_includedir/gvdb
 
