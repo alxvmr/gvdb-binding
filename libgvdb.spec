@@ -80,7 +80,7 @@ cp *.h %buildroot/%_includedir/gvdb
 
 cd documentation
 mkdir -p %buildroot/%_datadir/gvdb-doc/html/gvdb
-cp -r /. %buildroot/%_datadir/gvdb-doc/html/gvdb
+cp -r . %buildroot/%_datadir/gvdb-doc/html/gvdb
 cd ../..
 
 %meson_install
