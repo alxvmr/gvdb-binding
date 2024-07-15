@@ -79,8 +79,8 @@ mkdir -p %buildroot/%_includedir/gvdb
 cp *.h %buildroot/%_includedir/gvdb
 
 cd documentation
-mkdir -p %_datadir/gvdb-doc/html/gvdb
-cp -r /. %_datadir/gvdb-doc/html/gvdb
+mkdir -p %buildroot/%_datadir/gvdb-doc/html/gvdb
+cp -r /. %buildroot/%_datadir/gvdb-doc/html/gvdb
 cd ../..
 
 %meson_install
