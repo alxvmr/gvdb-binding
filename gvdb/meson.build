@@ -15,7 +15,7 @@ gvdb_sources = files('gvdb/gvdb-builder.c',
 
 gvdb_lib = shared_library('gvdb',
   gvdb_sources,
-  export_all_symbols: true,
+  gnu_symbol_visibility: default,
   c_args : ['-fPIC'],
   dependencies : [glib_dep, gio_dep, gobject_dep],
   link_args : ['-shared'],
