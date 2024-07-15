@@ -73,6 +73,7 @@ cp Gvdb-1.0.typelib %buildroot%_typelibdir # ПОМЕНЯТЬ НА BUILDROOT!!!!
 # Create .../usr/include/gvdb and move headers file
 mkdir -p %buildroot/%_includedir/gvdb
 
+cd ..
 %meson_install
 
 %files
