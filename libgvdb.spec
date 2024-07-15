@@ -68,7 +68,7 @@ g-ir-compiler Gvdb.gir -o Gvdb-1.0.typelib
 cd gvdb
 cd gvdb 
 mkdir -p %buildroot/%_typelibdir
-cp Gvdb-1.0.typelib %buildroot%_typelibdir # ПОМЕНЯТЬ НА BUILDROOT!!!!!!!!!!!
+cp Gvdb-1.0.typelib %buildroot%_typelibdir
 
 # Create .../usr/include/gvdb and move headers file
 mkdir -p %buildroot/%_includedir/gvdb
@@ -81,6 +81,9 @@ cd ..
 
 %files devel
 %_includedir/gvdb
+%_includedir/gvdb/gvdb-builder.h
+%_includedir/gvdb/gvdb-format.h
+%_includedir/gvdb/gvdb-reader.h
 %_libdir/%name.so
 
 %files gir
