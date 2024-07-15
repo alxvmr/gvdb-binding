@@ -18,6 +18,7 @@ BuildRequires: git gitk cmake rpm-build
 BuildRequires: python3-module-pygobject-devel python3-module-pygobject3 python3-devel
 BuildRequires: libcairo-devel libcairo-gobject libcairo-gobject-devel
 BuildRequires: libgio-devel gobject-introspection gobject-introspection-devel gem-gio2-devel
+BuildRequires: yelp-tools
 BuildRequires: meson
 
 %description
