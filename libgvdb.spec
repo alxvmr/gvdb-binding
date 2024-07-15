@@ -12,6 +12,7 @@ Group: System/Libraries
 URL: https://gitlab.gnome.org/GNOME/gvdb
 
 Source: gvdb-%version.tar
+BuildRequires(pre): rpm-macros-meson rpm-build-gir
 
 BuildRequires: git gitk cmake rpm-build
 BuildRequires: python3-module-pygobject-devel python3-module-pygobject3 python3-devel
