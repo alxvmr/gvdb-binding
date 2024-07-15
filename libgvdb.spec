@@ -94,6 +94,7 @@ cd ../..
 %_includedir/gvdb/gvdb-format.h
 %_includedir/gvdb/gvdb-reader.h
 %_libdir/%name.so
+%_datadir/gvdb-doc/html/gvdb
 
 %files gir
 %_typelibdir/*.typelib
