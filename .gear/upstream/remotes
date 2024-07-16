@@ -1,0 +1,3 @@
+[remote "upstream"]
+	url = https://gitlab.gnome.org/GNOME/gvdb.git
+	fetch = +refs/heads/*:refs/remotes/upstream/*
