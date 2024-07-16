@@ -23,49 +23,55 @@
 #define __gvdb_builder_h__
 
 #include <gio/gio.h>
+#include <glib-object.h>
 
 typedef struct _GvdbItem GvdbItem;
 
-G_GNUC_INTERNAL
+#define GVDB_TYPE_ITEM (gvdb_item_get_type())
+
+GType                   gvdb_item_get_type                              (void);
+
+GvdbItem *              gvdb_item_copy                                  (GvdbItem      *data);
+
+GvdbItem *              gvdb_item_new                                   (void);
+
+void                    gvdb_item_custom_free                           (GvdbItem      *data);
+
 GHashTable *            gvdb_hash_table_new                             (GHashTable    *parent,
                                                                          const gchar   *key);
 
-G_GNUC_INTERNAL
 GvdbItem *              gvdb_hash_table_insert                          (GHashTable    *table,
                                                                          const gchar   *key);
-G_GNUC_INTERNAL
+
 void                    gvdb_hash_table_insert_string                   (GHashTable    *table,
                                                                          const gchar   *key,
                                                                          const gchar   *value);
 
-G_GNUC_INTERNAL
 void                    gvdb_item_set_value                             (GvdbItem      *item,
                                                                          GVariant      *value);
-G_GNUC_INTERNAL
+
 void                    gvdb_item_set_hash_table                        (GvdbItem      *item,
                                                                          GHashTable    *table);
-G_GNUC_INTERNAL
+
 void                    gvdb_item_set_parent                            (GvdbItem      *item,
                                                                          GvdbItem      *parent);
 
-G_GNUC_INTERNAL
 gboolean                gvdb_table_write_contents                       (GHashTable     *table,
                                                                          const gchar    *filename,
                                                                          gboolean        byteswap,
                                                                          GError        **error);
-G_GNUC_INTERNAL
+
 void                    gvdb_table_write_contents_async                 (GHashTable          *table,
                                                                          const gchar         *filename,
                                                                          gboolean             byteswap,
                                                                          GCancellable        *cancellable,
                                                                          GAsyncReadyCallback  callback,
                                                                          gpointer             user_data);
-G_GNUC_INTERNAL
+
 gboolean                gvdb_table_write_contents_finish                (GHashTable          *table,
                                                                          GAsyncResult        *result,
                                                                          GError             **error);
 
-G_GNUC_INTERNAL
 GBytes *                gvdb_table_get_contents                         (GHashTable          *table,
                                                                          gboolean             byteswap);
 
