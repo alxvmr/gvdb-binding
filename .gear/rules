@@ -1,0 +1,2 @@
+tar: upstream-git816b474:. name=@name@-@version@
+diff: upstream-git816b474:. . name=@name@-@version@-@release@-alt.patch

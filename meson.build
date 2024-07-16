@@ -13,6 +13,12 @@ gobject_dep = dependency('gobject-2.0')
 gvdb_sources = files('gvdb/gvdb-builder.c',
                      'gvdb/gvdb-reader.c')
 
+gvdb_dep = declare_dependency(
+  sources: gvdb_sources,
+  include_directories: include_directories('.'),
+)
+meson.override_dependency('gvdb', gvdb_dep)
+
 gvdb_lib = shared_library('gvdb',
   gvdb_sources,
   gnu_symbol_visibility: 'default',
@@ -22,4 +28,6 @@ gvdb_lib = shared_library('gvdb',
   version : '1.0',
   install : true
 )
+
+subdir('gvdb/tests')
 

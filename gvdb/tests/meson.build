@@ -4,7 +4,7 @@
 gvdb_test_exec = executable(
   'gvdb',
   files('gvdb.c'),
-  dependencies: [dependency('gio-2.0'), gvdb_dep],
+  dependencies: [gvdb_dep, glib_dep, gio_dep, gobject_dep],
 )
 
 test(
