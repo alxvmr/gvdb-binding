@@ -31,19 +31,14 @@ typedef struct _GvdbItem GvdbItem;
 
 GType                   gvdb_item_get_type                              (void);
 
-
 GvdbItem *              gvdb_item_copy                                  (GvdbItem      *data);
-
 
 GvdbItem *              gvdb_item_new                                   (void);
 
-
 void                    gvdb_item_custom_free                           (GvdbItem      *data);
-
 
 GHashTable *            gvdb_hash_table_new                             (GHashTable    *parent,
                                                                          const gchar   *key);
-
 
 GvdbItem *              gvdb_hash_table_insert                          (GHashTable    *table,
                                                                          const gchar   *key);
@@ -51,7 +46,6 @@ GvdbItem *              gvdb_hash_table_insert                          (GHashTa
 void                    gvdb_hash_table_insert_string                   (GHashTable    *table,
                                                                          const gchar   *key,
                                                                          const gchar   *value);
-
 
 void                    gvdb_item_set_value                             (GvdbItem      *item,
                                                                          GVariant      *value);
@@ -61,7 +55,6 @@ void                    gvdb_item_set_hash_table                        (GvdbIte
 
 void                    gvdb_item_set_parent                            (GvdbItem      *item,
                                                                          GvdbItem      *parent);
-
 
 gboolean                gvdb_table_write_contents                       (GHashTable     *table,
                                                                          const gchar    *filename,
@@ -78,7 +71,6 @@ void                    gvdb_table_write_contents_async                 (GHashTa
 gboolean                gvdb_table_write_contents_finish                (GHashTable          *table,
                                                                          GAsyncResult        *result,
                                                                          GError             **error);
-
 
 GBytes *                gvdb_table_get_contents                         (GHashTable          *table,
                                                                          gboolean             byteswap);

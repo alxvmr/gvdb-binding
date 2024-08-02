@@ -49,43 +49,42 @@ gvdb_table_get_type(void);
 
 G_BEGIN_DECLS
 
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 GvdbTable*              gvdb_table_copy                                 (GvdbTable    *table);
 
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 GvdbTable*              gvdb_table_empty_new                            (void);
 
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 GvdbTable *             gvdb_table_new_from_bytes                       (GBytes       *bytes,
                                                                          gboolean      trusted,
                                                                          GError      **error);
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 GvdbTable *             gvdb_table_new                                  (const gchar  *filename,
                                                                          gboolean      trusted,
                                                                          GError      **error);
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 void                    gvdb_table_free                                 (GvdbTable    *table);
 
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 gchar **                gvdb_table_get_names                            (GvdbTable    *table,
                                                                          gsize        *length);
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 gchar **                gvdb_table_list                                 (GvdbTable    *table,
                                                                          const gchar  *key);
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 GvdbTable *             gvdb_table_get_table                            (GvdbTable    *table,
                                                                          const gchar  *key);
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 GVariant *              gvdb_table_get_raw_value                        (GvdbTable    *table,
                                                                          const gchar  *key);
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 GVariant *              gvdb_table_get_value                            (GvdbTable    *table,
                                                                          const gchar  *key);
-
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 gboolean                gvdb_table_has_value                            (GvdbTable    *table,
                                                                          const gchar  *key);
- GVDB_GNUC_WEAK
+GVDB_GNUC_WEAK
 gboolean                gvdb_table_is_valid                             (GvdbTable    *table);
 
 G_END_DECLS

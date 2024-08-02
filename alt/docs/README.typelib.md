@@ -66,7 +66,7 @@ from gi.repository import Gvdb
 ```
 
 ### Documentation
-Once the package is built, the documentation for the bundling can be found in the `/usr/share/gvdb-doc/html/gvdb` directory. 
+Once the package is built, the documentation for the bundling can be found in the `/usr/share/gvdb-doc/html/gvdb` directory.
 To display it in the browser, you need to execute the following commands:
 
 ```bash
@@ -78,17 +78,17 @@ $BROWSER /usr/share/gvdb-doc/html/gvdb/index.html
 The repository contains the file `gvdb_test.py`, where the available methods of the bundled library are tested.
 
 
-The example is for the functionality we need to develop - reading policy binary files. 
+The example is for the functionality we need to develop - reading policy binary files.
 
 **Execution result**:
 ```bash
-/Software/BaseALT/Policies/gsettings/                                          None                                                                                                      
-/Software/BaseALT/Policies/gsettings/org.mate.background.color-shading-type    'vertical-gradient'                                                                                       
-/Software/BaseALT/                                                             None                                                                                                      
+/Software/BaseALT/Policies/gsettings/                                          None
+/Software/BaseALT/Policies/gsettings/org.mate.background.color-shading-type    'vertical-gradient'
+/Software/BaseALT/                                                             None
 /Software/BaseALT/Policies/ReadQueue/User/0                                    "('qwe1', '/var/cache/samba/gpo_cache/DOMAIN.TEST/POLICIES/{506A92C2-9C84-40CD-A950-FFEE42A9B0A5}', 131074)"
-/Software/                                                                     None                                                                                                      
-/Software/BaseALT/Policies/ReadQueue/User/                                     None                                                                                                      
-/Software/BaseALT/Policies/ReadQueue/                                          None                                                                                                      
-/                                                                              None                                                                                                      
+/Software/                                                                     None
+/Software/BaseALT/Policies/ReadQueue/User/                                     None
+/Software/BaseALT/Policies/ReadQueue/                                          None
+/                                                                              None
 /Software/BaseALT/Policies/                                                    None
 ```

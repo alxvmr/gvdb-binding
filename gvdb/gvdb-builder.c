@@ -55,7 +55,7 @@ struct _GvdbItem
 void
 gvdb_item_custom_free (GvdbItem *data)
 {
-    g_free (data->key);
+  g_free (data->key);
 
   if (data->value)
     g_variant_unref (data->value);
