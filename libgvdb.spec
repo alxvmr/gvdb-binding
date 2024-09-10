@@ -89,6 +89,7 @@ export LD_LIBRARY_PATH=%buildroot%_libdir
 %_includedir/gvdb/gvdb-format.h
 %_includedir/gvdb/gvdb-reader.h
 %_libdir/%name.so
+%_pkgconfigdir/*.pc
 
 %files gir
 %_typelibdir/*.typelib
